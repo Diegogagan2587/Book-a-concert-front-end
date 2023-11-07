@@ -7,7 +7,7 @@ function RightButton() {
   hover:bg-slate-100 hover:text-[#94bc0c] hover:border-[#94bc0c]
   transition duration-500 ease-in-out"
       >
-        <ion-icon name="chevron-back-outline"></ion-icon>
+        <ion-icon name="chevron-forward-outline"></ion-icon>
       </button>
     );
   }
