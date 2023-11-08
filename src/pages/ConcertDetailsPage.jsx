@@ -7,18 +7,18 @@ function ConcertDetailsPage() {
   return (
     // Div below need to be adjusted for thir CSS properties when integrating this component to the app
     //Right now its position is absolute so might intergere with other components
-    <div className="container flex flex-col md:flex-row w-full min-h-screen mx-0 my-0 bg-white">
-      <section className="flex flex-col justify-evenly m-2 p-2">
-        <div className='flex items-center justify-center h-2/3 border-2 bg-gray-100 rounded rounded-lg p-2 mb-2 md:mb-inherit'>
+    <section className=" container flex flex-col w-full min-h-screen mx-0 my-0 bg-white">
+      <article className=" flex flex-col md:flex-row m-2 p-2 ">
+        <div className="flex items-center justify-center h-2/3 border-2 bg-gray-100 rounded rounded-lg p-2 mb-2 md:mb-inherit">
           <img src={imgURL} alt="concert" className="rounded-lg max-h-full" />
         </div>
 
-        <div className="container flex justify-between">
-          <LeftButton />
+        <div className="container flex justify-between md:w-1/3">
+          <ItemDataPanel />
         </div>
-      </section>
-      <ItemDataPanel />
-    </div>
+      </article>
+      <LeftButton />
+    </section>
   );
 }
 
