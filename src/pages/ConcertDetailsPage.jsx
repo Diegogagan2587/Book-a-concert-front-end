@@ -1,6 +1,6 @@
 import ItemDataPanel from '../components/ItemDataPanel';
 import LeftButton from '../components/buttons/LeftButton';
-import RightButton from '../components/buttons/RightButton';
+
 let imgURL =
   'https://images.pexels.com/photos/1387174/pexels-photo-1387174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
 function ConcertDetailsPage() {
