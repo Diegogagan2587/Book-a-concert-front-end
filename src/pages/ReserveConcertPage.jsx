@@ -11,7 +11,7 @@ function ReserverConcertPage() {
     <>
       <main className={`bg-[url(${imgURL})] bg-cover bg-center  text-white`}>
         <div className="bg-[#96bf0180] backdrop-blur-md h-screen flex flex-col gap-5 items-center justify-center">
-          <section className="text-center flex flex-col items-center md:w-1/2 gap-5">
+          <section className="text-center flex flex-col items-center w-3/4 md:w-1/2 gap-5">
             <div>
               <h1 className="text-2xl font-bold">Book for a concert</h1>
               <span>get your ticket now!</span>
