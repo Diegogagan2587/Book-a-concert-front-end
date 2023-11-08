@@ -24,7 +24,7 @@ function ReserverConcertPage() {
             </p>
           </section>
           <form className="flex flex-col gap-20 items-center">
-            <div className="flex gap-5">
+            <div className="flex gap-5 flex-col sm:flex-row">
               <label>
                 <DropDownSelect
                   id="select-city"
