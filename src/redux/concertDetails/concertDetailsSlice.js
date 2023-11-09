@@ -29,6 +29,13 @@ export const concertDetailsSlice = createSlice({
       //state.concertDetails = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    //extraReducers functions here
+    builder.addCase('getConcert/fulfilled', (state, action) => {
+      console.log('Running --> concertDetailsSlice.js: action.payload: ', action.payload);
+      return { ...state, ...action.payload};
+    });
+  },
 });
 
 export const { fetchedConcert, reservedConcert } = concertDetailsSlice.actions;
