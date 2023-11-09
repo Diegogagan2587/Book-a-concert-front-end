@@ -1,9 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import getConcert from '../redux/requests/getConcert';
 import ItemDataPanel from '../components/ItemDataPanel';
 import LeftButton from '../components/buttons/LeftButton';
+import { useEffect } from 'react';
 
 function ConcertDetailsPage() {
+  const dispatch = useDispatch();
   const concert = useSelector((state) => state.concertDetails);
+  
+ //getConcert will be called with the id of the concert that is clicked on the ConcertsPage
+  useEffect(() => {
+    dispatch(getConcert(1));
+  }, []);
+
   return (
     // Div below need to be adjusted for thir CSS properties when integrating this component to the app
     //Right now its position is absolute so might intergere with other components
