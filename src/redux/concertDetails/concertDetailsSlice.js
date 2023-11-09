@@ -19,15 +19,6 @@ export const concertDetailsSlice = createSlice({
   name: 'concertDetails',
   initialState,
   reducers: {
-    //reducers functions here
-    fetchedConcert: (state, action) => {
-      //logic here example:
-      //state.concertDetails = action.payload;
-    },
-    reservedConcert: (state, action) => {
-      //logic here example:
-      //state.concertDetails = action.payload;
-    },
   },
   extraReducers: (builder) => {
     //extraReducers functions here

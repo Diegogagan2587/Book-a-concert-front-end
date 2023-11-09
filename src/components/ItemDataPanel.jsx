@@ -1,11 +1,8 @@
 import{ PropTypes } from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { reservedConcert } from '../redux/concertDetails/concertDetailsSlice';
 import RoundedButton from './buttons/RoundedButton';
 
 function ItemDataPanel(props) {
   const { title, organizer, description, price, date, city } = props.concert;
-  const dispatch = useDispatch();
   return (
     <section className="flex flex-col gap-5 md:justify-between md:h-2/3 m-2 p-x-2 p-y-6">
       <div className="flex flex-col gap-5 ">
