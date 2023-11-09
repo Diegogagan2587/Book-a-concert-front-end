@@ -39,7 +39,7 @@ function ItemDataPanel(props) {
       </div>
       <div className="container flex justify-end  w-full">
         <RoundedButton
-          onClick={()=>dispatch(reservedConcert())}
+          onClick={()=>console.log("Reserve button clicked")}
           text="Reserve"
         />
       </div>
