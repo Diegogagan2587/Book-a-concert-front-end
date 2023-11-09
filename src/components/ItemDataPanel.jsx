@@ -1,7 +1,11 @@
+import{ PropTypes } from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { reservedConcert } from '../redux/concertDetails/concertDetailsSlice';
 import RoundedButton from './buttons/RoundedButton';
 
 function ItemDataPanel(props) {
-  const { title, organizer_id, description, price, date, city } = props.concert;
+  const { title, organizer, description, price, date, city } = props.concert;
+  const dispatch = useDispatch();
   return (
     <section className="flex flex-col gap-5 md:justify-between md:h-2/3 m-2 p-x-2 p-y-6">
       <div className="flex flex-col gap-5 ">
@@ -15,7 +19,7 @@ function ItemDataPanel(props) {
             <tbody>
               <tr className="bg-neutral-100">
                 <td>Organized by:</td>
-                <td>{organizer_id}</td>
+                <td>{organizer}</td>
               </tr>
               <tr>
                 <td>Date:</td>
@@ -34,10 +38,25 @@ function ItemDataPanel(props) {
         </div>
       </div>
       <div className="container flex justify-end  w-full">
-        <RoundedButton text="Reserve" />
+        <RoundedButton
+          onClick={()=>dispatch(reservedConcert())}
+          text="Reserve"
+        />
       </div>
     </section>
   );
 }
+
+// We validate props below
+ItemDataPanel.propTypes = {
+  concert: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    organizer: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+  }),
+};
 
 export default ItemDataPanel;
