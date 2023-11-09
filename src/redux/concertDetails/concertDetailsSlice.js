@@ -32,7 +32,6 @@ export const concertDetailsSlice = createSlice({
   extraReducers: (builder) => {
     //extraReducers functions here
     builder.addCase('getConcert/fulfilled', (state, action) => {
-      console.log('Running --> concertDetailsSlice.js: action.payload: ', action.payload);
       return { ...state, ...action.payload};
     });
   },
