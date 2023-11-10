@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 
-function RoundedButton({ text, onClick }) {
+function RoundedButton({ text, onClick,type }) {
   return (
     <button 
+    type={type}    
       onClick={onClick}
       className="container flex space-x-2 items-center w-28 md:w-40 py-1
         bg-[#94bc0c] border-white border-solid border-2 text-white
@@ -23,6 +24,7 @@ function RoundedButton({ text, onClick }) {
 RoundedButton.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func,
+  type: PropTypes.string,
 };
 
 export default RoundedButton;
