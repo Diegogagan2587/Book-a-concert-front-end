@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-function DropDownSelect({ id, name, items }) {
+function DropDownSelect({ id, name, items, onChange }) {
   return (
-    <select
+    <select onChange={onChange}
       id={`${id}`}
       name={`${name}`}
       className="bg-[#96bf01] hover:bg-slate-100 text-white hover:text-[#94bc0c]
@@ -23,6 +23,7 @@ DropDownSelect.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
+  onChange: PropTypes.func,
 };
 
 export default DropDownSelect;
