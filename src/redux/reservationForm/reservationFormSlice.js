@@ -2,9 +2,15 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   concerts: [],
-  availableConcerts: [],
-  availableDates: [],
-  availableCities: [],
+  availableConcerts: ['Select a concert'],
+  availableDates: ['Select a date'],
+  availableCities: ['Select a city'],
+  reservation: {
+    user_id: 1,
+    concert_id: undefined,
+    date: '',
+    city: '',
+  },
 };
 
 export const reservationFormSlice = createSlice({
@@ -13,10 +19,6 @@ export const reservationFormSlice = createSlice({
   reducers: {
     //reducers functions here
     updatedAvailability: (state, action) => {
-      console.log(
-        'updating availability from within reducer for-->',
-        action.payload
-      );
       //first I filter the concerts that include the action.payload, it might be a city, a date or a concert
       let filteredConcerts = state.concerts.filter((concert) => {
         return (
@@ -57,9 +59,9 @@ export const reservationFormSlice = createSlice({
       let concerts = action.payload.map((concert) => concert.title);
       let newState = {
         concerts: [...action.payload],
-        availableCities: cities,
-        availableConcerts: concerts,
-        availableDates: dates,
+        availableCities: ['Select a city', ...cities],
+        availableConcerts: ['Select a concert', ...concerts],
+        availableDates: ['Select a date', ...dates],
       };
       return { ...state, ...newState };
     });
