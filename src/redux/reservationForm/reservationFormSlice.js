@@ -5,12 +5,6 @@ const initialState = {
   availableConcerts: ['Select a concert'],
   availableDates: ['Select a date'],
   availableCities: ['Select a city'],
-  reservation: {
-    user_id: 1,
-    concert_id: undefined,
-    date: '',
-    city: '',
-  },
 };
 
 export const reservationFormSlice = createSlice({
