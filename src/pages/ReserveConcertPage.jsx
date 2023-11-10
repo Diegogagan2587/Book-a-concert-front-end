@@ -1,12 +1,18 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import  getConcerts  from '../redux/requests/getConcerts';
 import DropDownSelect from '../components/buttons/DropDownSelect';
 import RoundedButton from '../components/buttons/RoundedButton';
 
 let imgURL =
   'https://images.pexels.com/photos/1387174/pexels-photo-1387174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
-let cities = ['Bogota', 'Medellin', 'Cali', 'Mexico City', 'Sao Paulo'];
-let dates = ['25-Jan-2024', '26-Jan-2024', '27-Jan-2024', '28-Jan-2024'];
 
 function ReserverConcertPage() {
+  const {availableCities, availableDates, availableConcerts} = useSelector((state) => state.reservationForm);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getConcerts());
+  }, []);
   return (
     <>
       <main className={`bg-[url(${imgURL})] bg-cover bg-center  text-white`}>
@@ -29,14 +35,21 @@ function ReserverConcertPage() {
                 <DropDownSelect
                   id="select-city"
                   name="select-city"
-                  items={cities}
+                  items={availableCities}
                 />
               </label>
               <label>
                 <DropDownSelect
                   id="select-date"
                   name="select-date"
-                  items={dates}
+                  items={availableDates}
+                />
+              </label>
+              <label>
+                <DropDownSelect
+                  id="select-concert"
+                  name="select-concert"
+                  items={availableConcerts}
                 />
               </label>
             </div>
