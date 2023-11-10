@@ -5,7 +5,7 @@ const POST_RESERVATION_URL = `${API_URL_BASE}/reservations`;
 
 const postReservation = createAsyncThunk(
   'postReservation',
-  async ({ user_id, concert_id, date, city }) => {
+  async ({ user_id, id, date, city }) => {
     const response = await fetch(POST_RESERVATION_URL, {
       method: 'POST',
       headers: {
@@ -14,7 +14,7 @@ const postReservation = createAsyncThunk(
       body: JSON.stringify({
         reservation: {
           user_id: user_id, // Replace with the actual user's ID
-          concert_id: concert_id, // Replace with the actual concert's ID
+          concert_id: id,
           date: date,
           city: city,
         },
