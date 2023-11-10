@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updatedAvailability, resetAvailability } from '../redux/reservationForm/reservationFormSlice';
+import {
+  updatedAvailability,
+  resetAvailability,
+} from '../redux/reservationForm/reservationFormSlice';
 import getConcerts from '../redux/requests/getConcerts';
 import DropDownSelect from '../components/buttons/DropDownSelect';
 import RoundedButton from '../components/buttons/RoundedButton';
@@ -10,9 +13,8 @@ let imgURL =
   'https://images.pexels.com/photos/1387174/pexels-photo-1387174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
 
 function ReserverConcertPage() {
-  const { availableCities, availableDates, availableConcerts, concerts } = useSelector(
-    (state) => state.reservationForm
-  );
+  const { availableCities, availableDates, availableConcerts, concerts } =
+    useSelector((state) => state.reservationForm);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getConcerts());
@@ -28,11 +30,10 @@ function ReserverConcertPage() {
 
     //we get the concert that has the same date, city and concert name from state
     let concertToBook = concerts.find(
-      (concert) => (
+      (concert) =>
         concert.city === city &&
         concert.date === date &&
         concert.title === concertTitle
-      )
     );
     //finally we post the reservation to the database
     dispatch(postReservation({ user_id, ...concertToBook }));
@@ -91,7 +92,11 @@ function ReserverConcertPage() {
               </label>
             </div>
             <div className="flex gap-5">
-              <RoundedButton text="Reset" type="button" onClick={() => dispatch(resetAvailability())}/>
+              <RoundedButton
+                text="Reset"
+                type="button"
+                onClick={() => dispatch(resetAvailability())}
+              />
               <RoundedButton text="Book Now">
                 <input type="submit" />
               </RoundedButton>
