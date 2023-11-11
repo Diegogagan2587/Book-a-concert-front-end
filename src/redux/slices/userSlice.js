@@ -13,7 +13,7 @@ export const getCurrentUser = createAsyncThunk(
 export const registerUser = createAsyncThunk(
   'user/registerUser',
   async (userData) => {
-    const response = await fetch('https://book-a-concert-api.onrender.com/register', {
+    const response = await fetch('https://book-a-concert-api.onrender.com/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
