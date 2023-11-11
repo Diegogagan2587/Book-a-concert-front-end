@@ -1,7 +1,7 @@
 // src/components/Login.jsx
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUsername, getCurrentUser } from '../redux/slices/userSlice';
+import { loginUser } from '../redux/slices/userSlice';
 
 const Login = () => {
   const [username, setUsernameInput] = useState('');
@@ -9,8 +9,7 @@ const Login = () => {
   const userStatus = useSelector(state => state.user.status);
 
   const handleLogin = () => {
-    dispatch(setUsername(username));
-    dispatch(getCurrentUser(username));
+    dispatch(loginUser(username));
   };
 
   return (

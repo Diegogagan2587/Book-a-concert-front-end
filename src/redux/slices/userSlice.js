@@ -1,6 +1,7 @@
 // src/redux/slices/userSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+// Acción para obtener el usuario actual
 export const getCurrentUser = createAsyncThunk(
   'user/getCurrentUser',
   async () => {
@@ -10,6 +11,7 @@ export const getCurrentUser = createAsyncThunk(
   }
 );
 
+// Acción para registrar un nuevo usuario
 export const registerUser = createAsyncThunk(
   'user/registerUser',
   async (userData) => {
@@ -22,6 +24,22 @@ export const registerUser = createAsyncThunk(
     });
     const data = await response.json();
     return data;
+  }
+);
+
+// Nueva acción para iniciar sesión
+export const loginUser = createAsyncThunk(
+  'user/loginUser',
+  async (username) => {
+    const response = await fetch('https://book-a-concert-api.onrender.com/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: username }),
+    });
+    const data = await response.json();
+    return data.user || { error: 'Login failed' };
   }
 );
 
@@ -54,9 +72,19 @@ export const userSlice = createSlice({
         state.status = 'failed';
       })
       .addCase(registerUser.fulfilled, (state, action) => {
-        // Actualiza el estado con la información del usuario registrado
         state.details = action.payload;
         state.status = 'succeeded';
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        if (action.payload.error) {
+          state.status = 'failed';
+        } else {
+          state.details = action.payload;
+          state.status = 'succeeded';
+        }
+      })
+      .addCase(loginUser.rejected, (state) => {
+        state.status = 'failed';
       });
   },
 });
