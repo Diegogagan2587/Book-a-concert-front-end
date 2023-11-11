@@ -3,23 +3,22 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getCurrentUser = createAsyncThunk(
   'user/getCurrentUser',
-  async (username) => {
-    const response = await fetch('http://127.0.0.1:3000/users');
-    const users = await response.json();
-    const user = users.find(user => user.name === username);
-    return user || { error: 'User not found' };
+  async () => {
+    const response = await fetch('https://book-a-concert-api.onrender.com/current_user');
+    const data = await response.json();
+    return data.user || { error: 'User not found' };
   }
 );
 
 export const registerUser = createAsyncThunk(
   'user/registerUser',
   async (userData) => {
-    const response = await fetch('http://127.0.0.1:3000/users', {
+    const response = await fetch('https://book-a-concert-api.onrender.com/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(userData),
+      body: JSON.stringify({ user: userData }),
     });
     const data = await response.json();
     return data;

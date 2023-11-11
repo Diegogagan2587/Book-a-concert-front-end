@@ -21,7 +21,7 @@ const Signup = () => {
         onChange={(e) => setUserData({ ...userData, name: e.target.value })}
         placeholder="Username"
       />
-      <button onClick={handleSignup}>Sign Up</button>
+      <button onClick={handleSignup}>Signup</button>
     </div>
   );
 };
