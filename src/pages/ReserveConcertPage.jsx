@@ -12,7 +12,7 @@ import postReservation from '../redux/requests/postReservation';
 let imgURL =
   'https://images.pexels.com/photos/1387174/pexels-photo-1387174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
 
-function ReserverConcertPage() {
+function ReserveConcertPage() {
   const { availableCities, availableDates, availableConcerts, concerts } =
     useSelector((state) => state.reservationForm);
   const dispatch = useDispatch();
@@ -108,4 +108,4 @@ function ReserverConcertPage() {
   );
 }
 
-export default ReserverConcertPage;
+export default ReserveConcertPage;
