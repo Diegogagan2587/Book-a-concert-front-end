@@ -11,6 +11,21 @@ export const getCurrentUser = createAsyncThunk(
   }
 );
 
+export const registerUser = createAsyncThunk(
+  'user/registerUser',
+  async (userData) => {
+    const response = await fetch('http://127.0.0.1:3000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+    const data = await response.json();
+    return data;
+  }
+);
+
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
@@ -38,6 +53,11 @@ export const userSlice = createSlice({
       })
       .addCase(getCurrentUser.rejected, (state) => {
         state.status = 'failed';
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        // Actualiza el estado con la información del usuario registrado
+        state.details = action.payload;
+        state.status = 'succeeded';
       });
   },
 });
