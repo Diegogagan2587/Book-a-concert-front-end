@@ -1,11 +1,13 @@
-import './App.css'
+// src/App.jsx
+import './App.css';
+import Login from './components/Login';
 
 function App() {
   return (
     <div className='App'>
-    Hello World!
+      <Login /> 
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
