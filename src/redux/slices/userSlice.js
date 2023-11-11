@@ -4,9 +4,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const getCurrentUser = createAsyncThunk(
   'user/getCurrentUser',
   async (username) => {
-    const response = await fetch(`https://book-a-concert-api.onrender.com/users/${username}`);
-    const data = await response.json();
-    return data;
+    const response = await fetch('http://127.0.0.1:3000/users');
+    const users = await response.json();
+    const user = users.find(user => user.name === username);
+    return user || { error: 'User not found' };
   }
 );
 
@@ -15,7 +16,7 @@ export const userSlice = createSlice({
   initialState: {
     username: '',
     details: {},
-    status: 'loading', 
+    status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   },
   reducers: {
     setUsername: (state, action) => {
@@ -28,8 +29,12 @@ export const userSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(getCurrentUser.fulfilled, (state, action) => {
-        state.details = action.payload;
-        state.status = 'succeeded';
+        if (action.payload.error) {
+          state.status = 'failed';
+        } else {
+          state.details = action.payload;
+          state.status = 'succeeded';
+        }
       })
       .addCase(getCurrentUser.rejected, (state) => {
         state.status = 'failed';
