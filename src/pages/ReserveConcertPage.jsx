@@ -65,6 +65,7 @@ function ReserveConcertPage() {
                   id="select-city"
                   name="select-city"
                   items={availableCities}
+                  placeHolder={'Select City'}
                   onChange={(e) =>
                     dispatch(updatedAvailability(e.target.value))
                   }
@@ -75,6 +76,7 @@ function ReserveConcertPage() {
                   id="select-date"
                   name="select-date"
                   items={availableDates}
+                  placeHolder={'Select Date'}
                   onChange={(e) =>
                     dispatch(updatedAvailability(e.target.value))
                   }
@@ -85,6 +87,7 @@ function ReserveConcertPage() {
                   id="select-concert"
                   name="select-concert"
                   items={availableConcerts}
+                  placeHolder={'Select Concert'}
                   onChange={(e) =>
                     dispatch(updatedAvailability(e.target.value))
                   }
