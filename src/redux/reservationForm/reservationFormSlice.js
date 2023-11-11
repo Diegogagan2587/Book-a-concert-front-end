@@ -22,21 +22,32 @@ export const reservationFormSlice = createSlice({
         action.payload === 'Select a concert'
       )
         return state;
-      let filteredConcerts = state.concerts.filter((concert) => {
-        return (
+      let updatedConcerts = state.concerts.map((concert) => {
+        if (
           concert.city === action.payload ||
           concert.date === action.payload ||
           concert.title === action.payload
-        );
+        ) {
+          return concert
+        } else {
+          return { ...concert, available: false };
+        }
       });
       //then I update the available dates, cities and concerts
-      let dates = filteredConcerts.map((concert) => concert.date);
-      let cities = filteredConcerts.map((concert) => concert.city);
-      let concerts = filteredConcerts.map((concert) => concert.title);
+      let dates = updatedConcerts
+        .filter((concert) => concert.available && concert.date)
+        .map((concert) => concert.date);
+      let cities = updatedConcerts
+        .filter((concert) => concert.available && concert.city)
+        .map((concert) => concert.city);
+      let concerts = updatedConcerts
+        .filter((concert) => concert.available && concert.title)
+        .map((concert) => concert.title);
       let newState = {
-        availableCities: ['Select a city', ...cities],
-        availableConcerts: ['Select a concert', ...concerts],
-        availableDates: ['Select a date', ...dates],
+        concerts: [...updatedConcerts],
+        availableCities: [...cities],
+        availableConcerts: [ ...concerts],
+        availableDates: [ ...dates],
       };
       return { ...state, ...newState };
     },
@@ -44,11 +55,16 @@ export const reservationFormSlice = createSlice({
       //we will make all dates an cities available again
       let dates = state.concerts.map((concert) => concert.date);
       let cities = state.concerts.map((concert) => concert.city);
-      let concerts = state.concerts.map((concert) => concert.title);
+      let concertsTitles = state.concerts.map((concert) => concert.title);
+      let concerts = state.concerts.map((concert) => ({
+        ...concert,
+        available: true,
+      }));
       let newState = {
-        availableCities: ['Select a city', ...cities],
-        availableConcerts: ['Select a concert', ...concerts],
-        availableDates: ['Select a date', ...dates],
+        concerts: [...concerts],
+        availableCities: [ ...cities],
+        availableConcerts: [ ...concertsTitles],
+        availableDates: [ ...dates],
       };
       return { ...state, ...newState };
     },
@@ -58,13 +74,17 @@ export const reservationFormSlice = createSlice({
     builder.addCase('getConcerts/fulfilled', (state, action) => {
       let dates = action.payload.map((concert) => concert.date);
       let cities = action.payload.map((concert) => concert.city);
-      let concerts = action.payload.map((concert) => concert.title);
+      let concertsTitles = action.payload.map((concert) => concert.title);
+      let concerts = action.payload.map((concert) => ({
+        available: true,
+        ...concert,
+      }));
       let newState = {
-        concerts: [...action.payload],
+        concerts: [...concerts],
         status: 'succeeded',
-        availableCities: ['Select a city', ...cities],
-        availableConcerts: ['Select a concert', ...concerts],
-        availableDates: ['Select a date', ...dates],
+        availableCities: [ ...cities],
+        availableConcerts: [ ...concertsTitles],
+        availableDates: [ ...dates],
       };
       return { ...state, ...newState };
     });
