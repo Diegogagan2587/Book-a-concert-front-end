@@ -15,6 +15,13 @@ export const reservationFormSlice = createSlice({
     //reducers functions here
     updatedAvailability: (state, action) => {
       //first I filter the concerts that include the action.payload, it might be a city, a date or a concert
+      console.log(action.payload);
+      if (
+        action.payload === 'Select a city' ||
+        action.payload === 'Select a date' ||
+        action.payload === 'Select a concert'
+      )
+        return state;
       let filteredConcerts = state.concerts.filter((concert) => {
         return (
           concert.city === action.payload ||
@@ -27,9 +34,9 @@ export const reservationFormSlice = createSlice({
       let cities = filteredConcerts.map((concert) => concert.city);
       let concerts = filteredConcerts.map((concert) => concert.title);
       let newState = {
-        availableCities: cities,
-        availableConcerts: concerts,
-        availableDates: dates,
+        availableCities: ['Select a city', ...cities],
+        availableConcerts: ['Select a concert', ...concerts],
+        availableDates: ['Select a date', ...dates],
       };
       return { ...state, ...newState };
     },
@@ -39,9 +46,9 @@ export const reservationFormSlice = createSlice({
       let cities = state.concerts.map((concert) => concert.city);
       let concerts = state.concerts.map((concert) => concert.title);
       let newState = {
-        availableCities: cities,
-        availableConcerts: concerts,
-        availableDates: dates,
+        availableCities: ['Select a city', ...cities],
+        availableConcerts: ['Select a concert', ...concerts],
+        availableDates: ['Select a date', ...dates],
       };
       return { ...state, ...newState };
     },
