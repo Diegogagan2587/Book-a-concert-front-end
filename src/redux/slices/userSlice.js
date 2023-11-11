@@ -27,21 +27,35 @@ export const registerUser = createAsyncThunk(
   }
 );
 
-// Nueva acción para iniciar sesión
+// New action to log in a user
 export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (username) => {
-    const response = await fetch('https://book-a-concert-api.onrender.com/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name: username }),
-    });
-    const data = await response.json();
-    return data.user || { error: 'Login failed' };
+    try {
+      const response = await fetch('https://book-a-concert-api.onrender.com/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name: username }),
+      });
+      const data = await response.json();
+      console.log(data);
+
+      if (response.ok) {
+        // Successful login
+        return { message: data.message };
+      } else {
+        // Failed login
+        return { error: data.error || 'Login failed' };
+      }
+    } catch (error) {
+      // Handle network or other errors
+      return { error: 'Login failed' };
+    }
   }
 );
+
 
 export const userSlice = createSlice({
   name: 'user',
@@ -83,8 +97,9 @@ export const userSlice = createSlice({
           state.status = 'succeeded';
         }
       })
-      .addCase(loginUser.rejected, (state) => {
+      .addCase(loginUser.rejected, (state, action) => {
         state.status = 'failed';
+        state.details = { error: action.error.message || 'Login failed' };
       });
   },
 });

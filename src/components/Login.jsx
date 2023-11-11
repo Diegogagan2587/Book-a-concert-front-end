@@ -6,7 +6,8 @@ import { loginUser } from '../redux/slices/userSlice';
 const Login = () => {
   const [username, setUsernameInput] = useState('');
   const dispatch = useDispatch();
-  const userStatus = useSelector(state => state.user.status);
+  const userStatus = useSelector((state) => state.user.status);
+  const userMessage = useSelector((state) => state.user.details.message); // New line
 
   const handleLogin = () => {
     dispatch(loginUser(username));
@@ -22,7 +23,9 @@ const Login = () => {
       />
       <button onClick={handleLogin}>Login</button>
       {userStatus === 'loading' && <p>Loading...</p>}
-      {userStatus === 'failed' && <p>Error: User not found</p>}
+      {userStatus === 'failed' && <p>Error: {userMessage || 'User not found'}</p>}
+      {userStatus === 'succeeded' && <p>{userMessage}</p>}
+
     </div>
   );
 };
