@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   concerts: [],
+  status: 'idle',
   availableConcerts: ['Select a concert'],
   availableDates: ['Select a date'],
   availableCities: ['Select a city'],
@@ -53,11 +54,18 @@ export const reservationFormSlice = createSlice({
       let concerts = action.payload.map((concert) => concert.title);
       let newState = {
         concerts: [...action.payload],
+        status: 'succeeded',
         availableCities: ['Select a city', ...cities],
         availableConcerts: ['Select a concert', ...concerts],
         availableDates: ['Select a date', ...dates],
       };
       return { ...state, ...newState };
+    });
+    builder.addCase('getConcerts/pending', (state) => {
+      return { ...state, status: 'loading' };
+    });
+    builder.addCase('getConcerts/rejected', (state) => {
+      return { ...state, status: 'failed' };
     });
   },
 });
