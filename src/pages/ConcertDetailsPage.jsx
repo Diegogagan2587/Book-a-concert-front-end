@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import getConcert from '../redux/requests/getConcert';
 import ItemDataPanel from '../components/ItemDataPanel';
 import LeftButton from '../components/buttons/LeftButton';
@@ -6,12 +7,12 @@ import { useEffect } from 'react';
 
 function ConcertDetailsPage() {
   const dispatch = useDispatch();
+  const { id } = useParams(); // Obtiene el ID del concierto de la URL
   const concert = useSelector((state) => state.concertDetails);
 
-  //getConcert will be called with the id of the concert that is clicked on the ConcertsPage
   useEffect(() => {
-    dispatch(getConcert(1));
-  }, []);
+    dispatch(getConcert(id)); // Usa el ID para obtener los detalles del concierto
+  }, [id, dispatch]);
 
   return (
     // Div below need to be adjusted for thir CSS properties when integrating this component to the app
