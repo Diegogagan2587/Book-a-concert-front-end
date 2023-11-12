@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   concerts: [],
   status: 'idle',
+  resetForm: false,
   availableConcerts: ['Select a concert'],
   availableDates: ['Select a date'],
   availableCities: ['Select a city'],
@@ -44,6 +45,7 @@ export const reservationFormSlice = createSlice({
         .filter((concert) => concert.available && concert.title)
         .map((concert) => concert.title);
       let newState = {
+        resetForm: false,
         concerts: [...updatedConcerts],
         availableCities: [...cities],
         availableConcerts: [ ...concerts],
@@ -61,6 +63,7 @@ export const reservationFormSlice = createSlice({
         available: true,
       }));
       let newState = {
+        resetForm: true,
         concerts: [...concerts],
         availableCities: [ ...cities],
         availableConcerts: [ ...concertsTitles],
