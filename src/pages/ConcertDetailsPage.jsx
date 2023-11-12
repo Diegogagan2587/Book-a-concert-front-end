@@ -11,7 +11,7 @@ function ConcertDetailsPage() {
   const concert = useSelector((state) => state.concertDetails);
 
   useEffect(() => {
-    dispatch(getConcert(id)); // Usa el ID para obtener los detalles del concierto
+    dispatch(getConcert(id)); 
   }, [id, dispatch]);
 
   return (
