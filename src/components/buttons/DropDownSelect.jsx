@@ -1,29 +1,37 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function DropDownSelect({ id, name, items, onChange, placeHolder }) {
   const [selectedValue, setSelectedValue] = useState('');
+  const reset = useSelector((state) => state.reservationForm.resetForm);
 
-  const HandleSelectChange = (e) => {
-    const { value } = e.target;
+  const handleSelectChange = (e) => {
+    const value = e.target.value;
     setSelectedValue(value);
     onChange(e);
   };
 
+  useEffect(() => {
+    if(reset){
+      setSelectedValue('');
+    }
+  },[reset]);
+
   return (
     <select
-      onChange={HandleSelectChange}
-      id={`${id}`}
-      name={`${name}`}
+      onChange={handleSelectChange}
+      id={id}
+      name={name}
       className="bg-[#96bf01] hover:bg-slate-100 text-white hover:text-[#94bc0c]
-    border-2 hover:border-[#94bc0c]
-    flex items-center w-28 md:w-40
-   p-2 rounded-2xl
-   transition duration-500 ease-in-out"
+        border-2 hover:border-[#94bc0c]
+        flex items-center w-28 md:w-40
+        p-2 rounded-2xl
+        transition duration-500 ease-in-out"
       value={selectedValue}
     >
       {/* Placeholder option */}
-      <option value="" disabled hidden>
+      <option value="" disabled={!selectedValue} hidden={!!selectedValue}>
         {placeHolder}
       </option>
 
@@ -35,6 +43,7 @@ function DropDownSelect({ id, name, items, onChange, placeHolder }) {
     </select>
   );
 }
+
 DropDownSelect.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
