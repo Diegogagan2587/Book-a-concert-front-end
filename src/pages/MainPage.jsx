@@ -20,6 +20,7 @@ function MainPage() {
             <div className="concert-item">
               <img src={concert.img} alt={concert.title} />
               <h2>{concert.title}</h2>
+              <p>{concert.description}</p>
             </div>
           </Link>
         ))}
