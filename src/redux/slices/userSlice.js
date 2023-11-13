@@ -56,6 +56,15 @@ export const loginUser = createAsyncThunk(
   }
 );
 
+// Acción para cerrar sesión
+export const logoutUser = createAsyncThunk(
+  'user/logoutUser',
+  async () => {
+    await fetch('https://book-a-concert-api.onrender.com/logout', { method: 'DELETE' });
+    return {};
+  }
+);
+
 
 export const userSlice = createSlice({
   name: 'user',
@@ -71,6 +80,10 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+  .addCase(logoutUser.fulfilled, (state) => {
+    state.details = {};
+    state.status = 'idle';
+  })
       .addCase(getCurrentUser.pending, (state) => {
         state.status = 'loading';
       })
