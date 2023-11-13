@@ -14,6 +14,7 @@ function MainPage() {
   return (
     <div className="main-page">
       <h1>Available Concerts</h1>
+      <p>Please Select a Concert</p>
       <ul className="concert-list">
         {concerts.map((concert) => (
           <li key={concert.id}>
