@@ -40,17 +40,14 @@ export const loginUser = createAsyncThunk(
         body: JSON.stringify({ name: username }),
       });
       const data = await response.json();
-      console.log(data);
 
       if (response.ok) {
-        // Successful login
-        return { message: data.message };
+        // Asegúrate de devolver la información relevante del usuario aquí
+        return { username: username, ...data }; // Ajusta según la respuesta de tu API
       } else {
-        // Failed login
         return { error: data.error || 'Login failed' };
       }
     } catch (error) {
-      // Handle network or other errors
       return { error: 'Login failed' };
     }
   }

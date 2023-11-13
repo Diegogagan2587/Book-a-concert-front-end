@@ -1,22 +1,21 @@
 // src/components/NavigationPanel.jsx
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { logoutUser } from '../redux/slices/userSlice';
 
 function NavigationPanel() {
   const user = useSelector((state) => state.user.details);
+  const isAuthenticated = user && user.username; // Verifica si el usuario está autenticado
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate('/');
   };
 
   return (
     <nav>
       <Link to="/">Main Page</Link>
-      {user ? (
+      {isAuthenticated ? (
         <>
           <Link to="/reserve">Reserve</Link>
           <Link to="/my-reservations">My Reservations</Link>
@@ -26,8 +25,8 @@ function NavigationPanel() {
         </>
       ) : (
         <>
-          <button onClick={() => navigate('/login')}>Login</button>
-          <button onClick={() => navigate('/signup')}>Signup</button>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Signup</Link>
         </>
       )}
     </nav>
