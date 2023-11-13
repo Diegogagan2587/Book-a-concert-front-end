@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import getConcert from '../redux/requests/getConcert';
 import ItemDataPanel from '../components/ItemDataPanel';
 import LeftButton from '../components/buttons/LeftButton';
@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 
 function ConcertDetailsPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { id } = useParams(); // Obtiene el ID del concierto de la URL
   const concert = useSelector((state) => state.concertDetails);
 
@@ -31,7 +32,7 @@ function ConcertDetailsPage() {
           <ItemDataPanel concert={concert} />
         </div>
       </article>
-      <LeftButton />
+      <LeftButton onClick={()=>navigate('/')}/>
     </section>
   );
 }
