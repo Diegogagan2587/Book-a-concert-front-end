@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from '../redux/slices/userSlice'; 
+import reservationFormReducer from './reservationForm/reservationFormSlice';
 import concertDetailsReducer from './concertDetails/concertDetailsSlice';
 
 const store = configureStore({
@@ -7,6 +8,7 @@ const store = configureStore({
     //slices here
     user: userReducer,
     concertDetails: concertDetailsReducer,
+    reservationForm: reservationFormReducer,
   },
 });
 
