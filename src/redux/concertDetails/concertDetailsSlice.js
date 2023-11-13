@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 //Placeholder State: remove after connecting to backend
 const initialState = {
+  status: 'idle',
   id: 1,
   title: 'Test - Ariana Grande Live Concert',
   organizer: 'Test - Mr. Satan',
@@ -23,7 +24,14 @@ export const concertDetailsSlice = createSlice({
   extraReducers: (builder) => {
     //extraReducers functions here
     builder.addCase('getConcert/fulfilled', (state, action) => {
-      return { ...state, ...action.payload};
+      const newState = {...action.payload, status: 'success'};
+      return { ...state, ...newState };
+    });
+    builder.addCase('getConcert/rejected', (state) => {
+      return { ...state, status: 'error' };
+    });
+    builder.addCase('getConcert/pending', (state) => {
+      return { ...state, status: 'loading' };
     });
   },
 });

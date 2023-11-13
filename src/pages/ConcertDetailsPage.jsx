@@ -15,6 +15,9 @@ function ConcertDetailsPage() {
     dispatch(getConcert(id)); 
   }, [id, dispatch]);
 
+  if(concert.status === 'loading') return (<div className="flex justify-center items-center h-screen text-red-500">Loading...</div>)
+  if(concert.status === 'error') return (<div className="flex justify-center items-center h-screen text-red-500">Something went wrong...</div>)
+
   return (
     // Div below need to be adjusted for thir CSS properties when integrating this component to the app
     //Right now its position is absolute so might intergere with other components
