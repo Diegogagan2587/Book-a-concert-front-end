@@ -1,22 +1,18 @@
 // src/App.jsx
-import { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Login from './components/Login';
-import Signup from './components/Signup';
 import MainPage from './pages/MainPage';
 import ConcertDetailsPage from './pages/ConcertDetailsPage';
+import Authentication from './components/Authentication';
 
 function App() {
-  const [showLogin, setShowLogin] = useState(true);
+  const user = useSelector((state) => state.user.details);
 
   return (
     <Router>
       <div className='App'>
-        <button onClick={() => setShowLogin(true)}>Login</button>
-        <button onClick={() => setShowLogin(false)}>Signup</button>
-        {showLogin ? <Login /> : <Signup />}
-
+        {!user && <Authentication />}
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/concerts/:id" element={<ConcertDetailsPage />} />
