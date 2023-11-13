@@ -14,17 +14,19 @@ function MainPage() {
   return (
     <div className="main-page">
       <h1>Available Concerts</h1>
-      <div className="concert-list">
-        {concerts.map(concert => (
-          <Link key={concert.id} to={`/concerts/${concert.id}`}>
-            <div className="concert-item">
-              <img src={concert.img} alt={concert.title} />
-              <h2>{concert.title}</h2>
-              <p>{concert.description}</p>
-            </div>
-          </Link>
+      <ul className="concert-list">
+        {concerts.map((concert) => (
+          <li key={concert.id}>
+            <Link to={`/concerts/${concert.id}`}>
+              <div className="concert-item">
+                <img src={concert.img} alt={concert.title} />
+                <h2>{concert.title}</h2>
+                <p>{concert.description}</p>
+              </div>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
