@@ -7,7 +7,6 @@ function ItemDataPanel(props) {
   const navigate = useNavigate();
 
   const handleReserveClick = () => {
-    console.log("Reserve button clicked")
     navigate('/reserve');
   }
   
