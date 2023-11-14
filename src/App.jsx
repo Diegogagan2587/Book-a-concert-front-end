@@ -6,6 +6,8 @@ import ReserveConcertPage from './pages/ReserveConcertPage';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import NavigationPanel from './components/NavigationPanel';
+import AddConcertPage from './pages/AddConcertPage';
+import DeleteConcertPage from './pages/DeleteConcertPage'; 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import getOrganizers from './redux/requests/getOrganizers';
@@ -25,6 +27,8 @@ function App() {
           <Route path="/reserve" element={<ReserveConcertPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/add-concert" element={<AddConcertPage />} />
+          <Route path="/delete-concert" element={<DeleteConcertPage />} />
         </Routes>
       </div>
     </Router>
