@@ -38,7 +38,9 @@ function MyReservationsPage() {
 
             return (
               <li key={reservation.id} >
-                <img src={img} alt="Concert Image" />
+                <div className='img-container'>
+                  <img src={img} alt="Concert Image" />
+                </div>
                 <div className='bottom'>
                   <div>{reservation.concert_title}</div>
                   <div>{description}</div>
