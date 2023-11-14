@@ -40,19 +40,24 @@ export const loginUser = createAsyncThunk(
         body: JSON.stringify({ name: username }),
       });
       const data = await response.json();
-      console.log(data);
 
       if (response.ok) {
-        // Successful login
-        return { message: data.message };
+        return { username: username, ...data }; 
       } else {
-        // Failed login
         return { error: data.error || 'Login failed' };
       }
     } catch (error) {
-      // Handle network or other errors
       return { error: 'Login failed' };
     }
+  }
+);
+
+// Acción para cerrar sesión
+export const logoutUser = createAsyncThunk(
+  'user/logoutUser',
+  async () => {
+    await fetch('https://book-a-concert-api.onrender.com/logout', { method: 'DELETE' });
+    return {};
   }
 );
 
@@ -71,6 +76,10 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+  .addCase(logoutUser.fulfilled, (state) => {
+    state.details = {};
+    state.status = 'idle';
+  })
       .addCase(getCurrentUser.pending, (state) => {
         state.status = 'loading';
       })
