@@ -1,11 +1,12 @@
 // src/pages/AddConcertPage.jsx
-import  { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addConcert } from '../redux/slices/concertSlice';
 
 const AddConcertPage = () => {
   const [concertData, setConcertData] = useState({
     title: '',
+    organizer_id: 0,
     description: '',
     img: '',
     price: 0,
@@ -13,11 +14,20 @@ const AddConcertPage = () => {
     city: ''
   });
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.details);
+
+  const [currentUser, setCurrentUser] = useState({});
+
+  useEffect(() => {
+    fetch('https://book-a-concert-api.onrender.com/current_user')
+
+      .then((res) => res.json())
+      .then((data) => setCurrentUser(data));
+  }, []);
+  console.log("This is the current user id: " + currentUser.id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addConcert({ ...concertData, organizer_id: user.id }));
+    dispatch(addConcert({ ...concertData, organizer_id: currentUser.id }));
   };
 
   const handleChange = (e) => {
