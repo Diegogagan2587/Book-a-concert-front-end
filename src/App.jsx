@@ -12,7 +12,7 @@ import DeleteConcertPage from './pages/DeleteConcertPage';
 function App() {
   return (
     <Router>
-      <div className='App'>
+      <div className='App sm:flex '>
         <NavigationPanel />
         <Routes>
           <Route path="/" element={<MainPage />} />
