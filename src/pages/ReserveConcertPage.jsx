@@ -18,7 +18,7 @@ function ReserveConcertPage() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getConcerts());
-  }, []);
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
