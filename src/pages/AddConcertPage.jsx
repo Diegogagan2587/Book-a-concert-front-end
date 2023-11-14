@@ -1,6 +1,6 @@
 // src/pages/AddConcertPage.jsx
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addConcert } from '../redux/slices/concertSlice';
 
 const AddConcertPage = () => {
@@ -23,7 +23,6 @@ const AddConcertPage = () => {
       .then((res) => res.json())
       .then((data) => setCurrentUser(data));
   }, []);
-  console.log("This is the current user id: " + currentUser.id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
