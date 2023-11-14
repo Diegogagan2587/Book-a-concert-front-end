@@ -24,7 +24,7 @@ function ItemDataPanel(props) {
             <tbody>
               <tr className="bg-neutral-100">
                 <td>Organized by:</td>
-                <td>{organizer}</td>
+                <td>{organizer.name}</td>
               </tr>
               <tr>
                 <td>Date:</td>

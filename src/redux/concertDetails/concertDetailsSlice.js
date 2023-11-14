@@ -33,6 +33,20 @@ export const concertDetailsSlice = createSlice({
     builder.addCase('getConcert/pending', (state) => {
       return { ...state, status: 'loading' };
     });
+
+    builder.addCase('getOrganizers/fulfilled', (state, action) => {
+      console.log('running getOrganizers----->>',action.payload);
+      //we find the organizer that matches the concert organizer
+      const organizer = action.payload.find((organizer) => organizer.id === state.organizer_id);
+      const newState = {
+        organizer: organizer,
+        organizers : action.payload,
+      };
+      return { ...state, ...newState };
+    });
+    builder.addCase('getOrganizers/rejected', (state) => {
+      return { ...state, organizer: 'Not found' };
+    });
   },
 });
 
