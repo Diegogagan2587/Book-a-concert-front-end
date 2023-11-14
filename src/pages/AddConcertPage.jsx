@@ -1,10 +1,10 @@
 // src/pages/AddConcertPage.jsx
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addConcert } from '../redux/slices/concertSlice';
 
 const AddConcertPage = () => {
-  const [concertData, setConcertData] = useState({
+  const initialConcertData = {
     title: '',
     organizer_id: 0,
     description: '',
@@ -12,17 +12,32 @@ const AddConcertPage = () => {
     price: 0,
     date: '',
     city: ''
-  });
+  };
+
+  const [concertData, setConcertData] = useState(initialConcertData);
+  const [successMessage, setSuccessMessage] = useState('');
   const dispatch = useDispatch();
+  const concertStatus = useSelector((state) => state.concerts.status);
 
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
     fetch('https://book-a-concert-api.onrender.com/current_user')
-
       .then((res) => res.json())
       .then((data) => setCurrentUser(data));
   }, []);
+
+  useEffect(() => {
+    if (concertStatus === 'succeeded') {
+      setSuccessMessage('Concert created successfully!');
+      setConcertData(initialConcertData);
+    }
+  }, [concertStatus]);
+
+  useEffect(() => {
+    // Resetear el mensaje de éxito cuando el componente se monta
+    setSuccessMessage('');
+  }, []); // Aquí faltaba cerrar la función useEffect
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,6 +51,7 @@ const AddConcertPage = () => {
   return (
     <div>
       <h2>Add a New Concert</h2>
+      {successMessage && <p>{successMessage}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
