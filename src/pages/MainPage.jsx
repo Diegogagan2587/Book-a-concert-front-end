@@ -25,11 +25,37 @@ function MainPage() {
     slidesToScroll: 3,
     prevArrow: <LeftButton />,
     nextArrow: <RightButton />,
-    className: 'center border-2 flex items-center',
+    className: 'center flex items-center h-4/5 bg-gray-200 my-auto',
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
-    <div className="main-page container">
+    <div className="main-page box-border h-full flex flex-col justify-between ">
       <h2 className="text-center">Available Concerts</h2>
       <Slider {...settings}>
         {concerts.map((concert) => (
