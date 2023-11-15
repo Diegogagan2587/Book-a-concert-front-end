@@ -22,16 +22,18 @@ function App() {
     <Router>
       <div className='App sm:flex '>
         <NavigationPanel />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/concerts/:id" element={<ConcertDetailsPage />} />
-          <Route path="/reserve" element={<ReserveConcertPage />} />
-          <Route path="/my-reservations" element={<MyReservationsPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/add-concert" element={<AddConcertPage />} />
-          <Route path="/delete-concert" element={<DeleteConcertPage />} />
-        </Routes>
+        <main className="container sm:w-3/4 h-screen">
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/concerts/:id" element={<ConcertDetailsPage />} />
+            <Route path="/reserve" element={<ReserveConcertPage />} />
+            <Route path="/my-reservations" element={<MyReservationsPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/add-concert" element={<AddConcertPage />} />
+            <Route path="/delete-concert" element={<DeleteConcertPage />} />
+          </Routes>
+        </main>
       </div>
     </Router>
   );
