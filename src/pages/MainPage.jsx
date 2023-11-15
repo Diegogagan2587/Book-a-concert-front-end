@@ -28,7 +28,7 @@ function MainPage() {
   return (
     <div className="main-page container">
       <h1>Available Concerts</h1>
-      <Slider {...settings}>
+      <Slider {...settings} className='flex items-end'>
         {concerts.map((concert) => (
           <div key={concert.id}>
             <Link to={`/concerts/${concert.id}`}>
