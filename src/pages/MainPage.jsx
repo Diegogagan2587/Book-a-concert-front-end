@@ -20,20 +20,23 @@ function MainPage() {
     infinite: true,
     speed: 500,
     slidesToShow: 3, // Adjust the number of slides to show
-    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: '60px',
+    slidesToScroll: 3,
     prevArrow: <LeftButton />,
     nextArrow: <RightButton />,
+    className: 'center border-2 flex items-center',
   };
 
   return (
     <div className="main-page container">
-      <h1>Available Concerts</h1>
-      <Slider {...settings} className='flex items-end'>
+      <h2 className="text-center">Available Concerts</h2>
+      <Slider {...settings}>
         {concerts.map((concert) => (
           <div key={concert.id}>
             <Link to={`/concerts/${concert.id}`}>
-              <div className="concert-item">
-                <img src={concert.img} alt={concert.title} className="w-md" />
+              <div className="concert-item flex flex-col bg-white">
+                <img src={concert.img} alt={concert.title} />
                 <h2>{concert.title}</h2>
                 <p>{concert.description}</p>
               </div>
