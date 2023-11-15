@@ -21,14 +21,16 @@ function NavigationPanel() {
     <nav className="border-2 sm:flex w-full sm:w-1/4">
       <div className=" flex justify-between px-4 sm:hidden">
         <span onClick={() => handleMenu()}>
-          <ion-icon name={`${isNavOpen&&'close-outline'||'menu-outline'}`}></ion-icon>
+          <ion-icon
+            name={`${(isNavOpen && 'close-outline') || 'menu-outline'}`}
+          ></ion-icon>
         </span>
         <span>
           <ion-icon name="search-outline"></ion-icon>
         </span>
       </div>
       <ul
-         className={`
+        className={`
          flex flex-col sm:justify-center sm:gap-10 pl-4 pr-4
          w-1/3 md:w-full absolute sm:relative bg-white px-4 h-screen 
          ${!isNavOpen && 'sm:flex'}
@@ -38,14 +40,15 @@ function NavigationPanel() {
          transform ${isNavOpen ? 'left-0' : 'left-[-100%]'}
        `}
       >
-        
         <li className="hover:bg-[#94bc0c] pl-4 py-4">
           <Link to="/">Home</Link>
         </li>
         {isAuthenticated ? (
           <>
             <li className="hover:bg-[#94bc0c] pl-4 py-4">
-              <Link to="/reserve" className=''>Reserve</Link>
+              <Link to="/reserve" className="">
+                Reserve
+              </Link>
             </li>
             <li className="hover:bg-[#94bc0c] pl-4 py-4">
               <Link to="/my-reservations">Reservations</Link>
@@ -62,8 +65,12 @@ function NavigationPanel() {
           </>
         ) : (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
+            <li className="hover:bg-[#94bc0c] pl-4 py-4">
+              <Link to="/login">Login</Link>
+            </li>
+            <li className="hover:bg-[#94bc0c] pl-4 py-4">
+              <Link to="/signup">Signup</Link>
+            </li>
           </>
         )}
       </ul>
