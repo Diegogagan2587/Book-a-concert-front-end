@@ -23,7 +23,7 @@ function MainPage() {
     slidesToScroll: 3,
     prevArrow: <LeftButton />,
     nextArrow: <RightButton />,
-    className: 'center flex items-center h-4/5 my-auto',
+    className: 'center flex sm:flex items-center h-4/5 my-auto',
     responsive: [
       {
         breakpoint: 1024,
