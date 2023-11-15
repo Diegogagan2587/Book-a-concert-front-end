@@ -26,7 +26,7 @@ function MyReservationsPage() {
 
   return (
     <div className="my-reservations-page">
-      <h1>My Reservations</h1>
+      <h1>MY RESERVATIONS</h1>
       {myReservations.length === 0 ? (
         <h2>The user <strong>{current_user.name}</strong> has no reservations yet</h2>
       ) : (
@@ -42,10 +42,12 @@ function MyReservationsPage() {
                   <img src={img} alt="Concert Image" />
                 </div>
                 <div className='bottom'>
-                  <div>{reservation.concert_title}</div>
-                  <div>{description}</div>
-                  <div>{reservation.city}</div>
-                  <div>{reservation.date}</div>
+                  <div className='concert_title'>{reservation.concert_title}</div>
+                  <div className='concert_description'>{description}</div>
+                  <div className='city-date'>
+                    <div>{reservation.city}</div>
+                    <div>{reservation.date}</div>
+                  </div>
                 </div>
               </li>
             );
