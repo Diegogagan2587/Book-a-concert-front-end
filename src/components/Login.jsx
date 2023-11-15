@@ -23,7 +23,7 @@ const Login = () => {
 
   return (
     <div className='login-page'>
-      <h1>Book a Concert App</h1>
+      <h1>BOOK A CONCERT APP</h1>
       <div className='login-container'>
         <input
           type="text"
