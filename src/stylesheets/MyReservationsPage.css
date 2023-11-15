@@ -1,0 +1,46 @@
+.my-reservations-page {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(212, 212, 212);
+}
+
+.my-reservations-page h1 {
+  text-align: center;
+  color: white;
+  font-size: 3em;
+}
+
+.my-reservations-page ul {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.my-reservations-page li {
+  width: 200px;
+  border: 5px solid #94bc0c;
+  border-radius: 25px;
+  margin: 10px;
+
+  /* overflow: hidden; */
+}
+
+.my-reservations-page li .img-container {
+  width: 100%;
+  height: 100px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  overflow: hidden;
+}
+
+.my-reservations-page li .bottom {
+  height: 200px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+
+  /* align-items: center; */
+  justify-content: space-around;
+}
