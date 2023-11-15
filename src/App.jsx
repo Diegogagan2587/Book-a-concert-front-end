@@ -22,7 +22,7 @@ function App() {
     <Router>
       <div className='App sm:flex '>
         <NavigationPanel />
-        <div className="container sm:w-3/4 sm:h-screen">
+        <main className="container sm:w-3/4 sm:h-screen">
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/concerts/:id" element={<ConcertDetailsPage />} />
@@ -33,7 +33,7 @@ function App() {
             <Route path="/add-concert" element={<AddConcertPage />} />
             <Route path="/delete-concert" element={<DeleteConcertPage />} />
           </Routes>
-        </div>
+        </main>
       </div>
     </Router>
   );
