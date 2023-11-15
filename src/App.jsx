@@ -22,7 +22,7 @@ function App() {
     <Router>
       <div className='App sm:flex '>
         <NavigationPanel />
-        <main className="container sm:w-3/4 sm:h-screen">
+        <main className="container sm:w-3/4 h-screen">
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/concerts/:id" element={<ConcertDetailsPage />} />
