@@ -79,8 +79,13 @@ function NavigationPanel() {
                 Delete Concert
               </Link>
             </li>
-            <li className="hover:bg-[#94bc0c] pl-4 py-4">
-              <button onClick={handleLogout}>Logout</button>
+            <li>
+              <button
+                onClick={handleLogout}
+                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block text-left"
+              >
+                Logout
+              </button>
             </li>
           </>
         ) : (
