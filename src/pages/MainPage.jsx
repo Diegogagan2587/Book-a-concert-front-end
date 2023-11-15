@@ -23,7 +23,7 @@ function MainPage() {
     slidesToScroll: 3,
     prevArrow: <LeftButton />,
     nextArrow: <RightButton />,
-    className: 'center flex items-center h-4/5 bg-gray-200 my-auto',
+    className: 'center flex items-center h-4/5 my-auto',
     responsive: [
       {
         breakpoint: 1024,
@@ -51,9 +51,9 @@ function MainPage() {
       <Slider {...settings}>
         {concerts.map((concert) => (
           <div key={concert.id} >
-            <Link to={`/concerts/${concert.id}`}>
-              <div className="concert-item flex flex-col bg-white h-96 justify-between p-2 bg-blue-100 mx-2 w-300">
-                <div className="p-2 bg-black w-48 h-48 flex flex-1 items-center justify-center rounded-full">
+            <Link to={`/concerts/${concert.id}`} className='flex justify-center'>
+              <div className="shadow-xl border-2 rounded-md concert-item flex flex-col bg-white h-96 w-52 justify-between items-center p-2 mx-2 w-300">
+                <div className="p-2 bg-slate-200 w-48 h-48 flex flex-1 items-center justify-center rounded-full">
                   <img
                     src={concert.img}
                     alt={concert.title}
@@ -61,8 +61,8 @@ function MainPage() {
                   />
                 </div>
                 <div className='flex-1'>
-                  <h2 className="text-xl">{concert.title}</h2>
-                  <p>{concert.description}</p>
+                  <h2 className="text-xl font-bold">{concert.title}</h2>
+                  <p className='text-sm'>{concert.description}</p>
                 </div>
               </div>
             </Link>
