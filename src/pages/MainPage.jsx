@@ -20,8 +20,6 @@ function MainPage() {
     infinite: true,
     speed: 500,
     slidesToShow: 3, // Adjust the number of slides to show
-    centerMode: true,
-    centerPadding: '60px',
     slidesToScroll: 3,
     prevArrow: <LeftButton />,
     nextArrow: <RightButton />,
@@ -30,8 +28,8 @@ function MainPage() {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -39,16 +37,9 @@ function MainPage() {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          initialSlide: 1,
         },
       },
     ],
@@ -59,12 +50,20 @@ function MainPage() {
       <h2 className="text-center">Available Concerts</h2>
       <Slider {...settings}>
         {concerts.map((concert) => (
-          <div key={concert.id}>
+          <div key={concert.id} >
             <Link to={`/concerts/${concert.id}`}>
-              <div className="concert-item flex flex-col bg-white">
-                <img src={concert.img} alt={concert.title} />
-                <h2>{concert.title}</h2>
-                <p>{concert.description}</p>
+              <div className="concert-item flex flex-col bg-white h-96 justify-between p-2 bg-blue-100 mx-2 w-300">
+                <div className="p-2 bg-black w-48 h-48 flex flex-1 items-center justify-center rounded-full">
+                  <img
+                    src={concert.img}
+                    alt={concert.title}
+                    className="rounded-lg"
+                  />
+                </div>
+                <div className='flex-1'>
+                  <h2 className="text-xl">{concert.title}</h2>
+                  <p>{concert.description}</p>
+                </div>
               </div>
             </Link>
           </div>
