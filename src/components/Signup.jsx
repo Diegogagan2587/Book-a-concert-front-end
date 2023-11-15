@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { registerUser } from '../redux/slices/userSlice';
 
 const Signup = () => {
@@ -11,7 +11,7 @@ const Signup = () => {
 
   const handleSignup = () => {
     dispatch(registerUser(userData))
-      .then((result) => {
+      .then(() => {
         // Handle successful registration
         setErrorMessage(''); // Clear any previous error message
       })
