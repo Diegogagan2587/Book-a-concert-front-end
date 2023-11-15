@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getOrganizers());
-  }, []);
+  }, [dispatch]);
   return (
     <Router>
       <div className='App sm:flex '>
