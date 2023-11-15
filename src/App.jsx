@@ -20,7 +20,7 @@ function App() {
   }, [dispatch]);
   return (
     <Router>
-      <div className='App'>
+      <div className='App sm:flex '>
         <NavigationPanel />
         <Routes>
           <Route path="/" element={<MainPage />} />
