@@ -11,11 +11,6 @@ export const getCurrentUser = createAsyncThunk(
   }
 );
 
-
-
-
-
-
 // Acción para registrar un nuevo usuario
 export const registerUser = createAsyncThunk(
   'user/registerUser',
@@ -31,8 +26,6 @@ export const registerUser = createAsyncThunk(
 
       const data = await response.json();
 
-      console.log("error:" + data)
-
       return data;
     } catch (error) {
       // Handle other errors, if any
@@ -40,11 +33,6 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
-
-
-
-
-
 
 // New action to log in a user
 export const loginUser = createAsyncThunk(
@@ -79,7 +67,6 @@ export const logoutUser = createAsyncThunk(
     return {};
   }
 );
-
 
 export const userSlice = createSlice({
   name: 'user',
