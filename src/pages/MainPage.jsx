@@ -49,7 +49,7 @@ function MainPage() {
   return (
     <div className="main-page box-border h-full flex flex-col justify-between py-10">
       <h2 className="text-center text-4xl my-2">Available Concerts</h2>
-      <p className='text-center text-slate-500 my-2'>Please Select and event</p>
+      <p className='text-center text-slate-500 my-2'>Please select an event</p>
       <Slider {...settings}>
         {concerts.map((concert) => (
           <div key={concert.id} >
@@ -59,12 +59,12 @@ function MainPage() {
                   <img
                     src={concert.img}
                     alt={concert.title}
-                    className="rounded-lg"
+                    className="rounded-full w-full h-full object-cover"
                   />
                 </div>
-                <div className='flex-1'>
-                  <h2 className="text-xl font-bold">{concert.title}</h2>
-                  <p className='text-sm'>{concert.description}</p>
+                <div className='flex-1 flex flex-col justify-around '>
+                  <h2 className="text-lg font-bold">{concert.title}</h2>
+                  <p className='text-xs'>{concert.description}</p>
                 </div>
               </div>
             </Link>
