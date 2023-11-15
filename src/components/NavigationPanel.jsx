@@ -40,24 +40,44 @@ function NavigationPanel() {
          transform ${isNavOpen ? 'left-0' : 'left-[-100%]'}
        `}
       >
-        <li className="hover:bg-[#94bc0c] pl-4 py-4">
-          <Link to="/">Home</Link>
+        <li>
+          <Link to="/" className="hover:bg-[#94bc0c] pl-4 py-4 w-full block">
+            Home
+          </Link>
         </li>
         {isAuthenticated ? (
           <>
-            <li className="hover:bg-[#94bc0c] pl-4 py-4">
-              <Link to="/reserve" className="">
+            <li>
+              <Link
+                to="/reserve"
+                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
+              >
                 Reserve
               </Link>
             </li>
-            <li className="hover:bg-[#94bc0c] pl-4 py-4">
-              <Link to="/my-reservations">Reservations</Link>
+            <li>
+              <Link
+                to="/my-reservations"
+                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
+              >
+                Reservations
+              </Link>
             </li>
-            <li className="hover:bg-[#94bc0c] pl-4 py-4">
-              <Link to="/add-concert">Add Concert</Link>
+            <li>
+              <Link
+                to="/add-concert"
+                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
+              >
+                Add Concert
+              </Link>
             </li>
-            <li className="hover:bg-[#94bc0c] pl-4 py-4">
-              <Link to="/delete-concert">Delete Concert</Link>
+            <li>
+              <Link
+                to="/delete-concert"
+                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
+              >
+                Delete Concert
+              </Link>
             </li>
             <li className="hover:bg-[#94bc0c] pl-4 py-4">
               <button onClick={handleLogout}>Logout</button>
@@ -65,11 +85,21 @@ function NavigationPanel() {
           </>
         ) : (
           <>
-            <li className="hover:bg-[#94bc0c] pl-4 py-4">
-              <Link to="/login">Login</Link>
+            <li>
+              <Link
+                to="/login"
+                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
+              >
+                Login
+              </Link>
             </li>
-            <li className="hover:bg-[#94bc0c] pl-4 py-4">
-              <Link to="/signup">Signup</Link>
+            <li>
+              <Link
+                to="/signup"
+                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
+              >
+                Signup
+              </Link>
             </li>
           </>
         )}
