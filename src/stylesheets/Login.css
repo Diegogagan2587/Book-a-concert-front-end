@@ -1,5 +1,6 @@
 .login-page {
-  background-color: gray;
+  background-color: #ffb404;
+  width: 100%;
   height: 100vh;
   margin: 0 auto;
   display: flex;
@@ -17,7 +18,6 @@
 .login-page .login-container {
   width: 80%;
   height: 50%;
-  border: 5px solid #94bc0c;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -34,6 +34,12 @@
   border-radius: 25px;
   padding: 0 20px;
   background-color: white;
+}
+
+.login-page .login-container .btn {
+  background-color: #94bc0c;
+  color: white;
+  font-weight: bolder;
 }
 
 .login-page .login-container .login-input:focus {
