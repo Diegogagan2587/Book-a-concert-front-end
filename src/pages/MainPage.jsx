@@ -46,8 +46,9 @@ function MainPage() {
   };
 
   return (
-    <div className="main-page box-border h-full flex flex-col justify-between ">
-      <h2 className="text-center">Available Concerts</h2>
+    <div className="main-page box-border h-full flex flex-col justify-between py-10">
+      <h2 className="text-center text-4xl my-2">Available Concerts</h2>
+      <p className='text-center text-slate-500 my-2'>Please Select and event</p>
       <Slider {...settings}>
         {concerts.map((concert) => (
           <div key={concert.id} >
