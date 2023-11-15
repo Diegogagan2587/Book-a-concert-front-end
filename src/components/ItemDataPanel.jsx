@@ -23,7 +23,7 @@ function ItemDataPanel(props) {
             <tbody>
               <tr className="bg-neutral-100">
                 <td>Organized by:</td>
-                <td>{organizer.name}</td>
+                <td>{organizer&&organizer.name}</td>
               </tr>
               <tr>
                 <td>Date:</td>
@@ -55,7 +55,7 @@ function ItemDataPanel(props) {
 ItemDataPanel.propTypes = {
   concert: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    organizer: PropTypes.string.isRequired,
+    organizer: PropTypes.string,
     description: PropTypes.string.isRequired,
     price: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
