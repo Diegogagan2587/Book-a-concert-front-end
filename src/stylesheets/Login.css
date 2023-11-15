@@ -28,7 +28,7 @@
 
 .login-page .login-container .login-input,
 .login-page .login-container .btn,
-.login-page .error {  
+.login-page .error {
   width: 50%;
   height: 50px;
   border-radius: 25px;
@@ -40,6 +40,7 @@
   outline: none;
   box-shadow: 0 0 0 5px #94bc0c;
 }
+
 .login-page .login-container .btn:hover {
   box-shadow: 0 0 0 5px #94bc0c;
 }

@@ -23,8 +23,6 @@
   border: 5px solid #94bc0c;
   border-radius: 25px;
   margin: 10px;
-
-  /* overflow: hidden; */
 }
 
 .my-reservations-page li .img-container {
@@ -40,7 +38,5 @@
   padding: 5px;
   display: flex;
   flex-direction: column;
-
-  /* align-items: center; */
   justify-content: space-around;
 }
