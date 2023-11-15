@@ -11,21 +11,40 @@ export const getCurrentUser = createAsyncThunk(
   }
 );
 
+
+
+
+
+
 // Acción para registrar un nuevo usuario
 export const registerUser = createAsyncThunk(
   'user/registerUser',
-  async (userData) => {
-    const response = await fetch('https://book-a-concert-api.onrender.com/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ user: userData }),
-    });
-    const data = await response.json();
-    return data;
+  async (userData, { rejectWithValue }) => {
+    try {
+      const response = await fetch('https://book-a-concert-api.onrender.com/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user: userData }),        
+      });
+
+      const data = await response.json();
+
+      console.log("error:" + data)
+
+      return data;
+    } catch (error) {
+      // Handle other errors, if any
+      return rejectWithValue({ error: 'An error occurred' });
+    }
   }
 );
+
+
+
+
+
 
 // New action to log in a user
 export const loginUser = createAsyncThunk(
