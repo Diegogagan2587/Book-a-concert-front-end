@@ -1,8 +1,15 @@
 import{ PropTypes } from 'prop-types';
 import RoundedButton from './buttons/RoundedButton';
+import {useNavigate} from 'react-router-dom';
 
 function ItemDataPanel(props) {
   const { title, organizer, description, price, date, city } = props.concert;
+  const navigate = useNavigate();
+
+  const handleReserveClick = () => {
+    navigate('/reserve');
+  }
+  
   return (
     <section className="flex flex-col gap-5 md:justify-between md:h-2/3 m-2 p-x-2 p-y-6">
       <div className="flex flex-col gap-5 ">
@@ -16,7 +23,7 @@ function ItemDataPanel(props) {
             <tbody>
               <tr className="bg-neutral-100">
                 <td>Organized by:</td>
-                <td>{organizer}</td>
+                <td>{organizer.name}</td>
               </tr>
               <tr>
                 <td>Date:</td>
@@ -36,7 +43,7 @@ function ItemDataPanel(props) {
       </div>
       <div className="container flex justify-end  w-full">
         <RoundedButton
-          onClick={()=>console.log("Reserve button clicked")}
+          onClick={()=>handleReserveClick()}
           text="Reserve"
         />
       </div>
