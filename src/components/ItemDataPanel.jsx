@@ -3,7 +3,7 @@ import RoundedButton from './buttons/RoundedButton';
 import {useNavigate} from 'react-router-dom';
 
 function ItemDataPanel(props) {
-  const { title, organizer, description, price, date, city } = props.concert;
+  const { title, description, price, date, city, organizer_name } = props.concert;
   const navigate = useNavigate();
 
   const handleReserveClick = () => {
@@ -23,7 +23,7 @@ function ItemDataPanel(props) {
             <tbody>
               <tr className="bg-neutral-100">
                 <td>Organized by:</td>
-                <td>{organizer&&organizer.name}</td>
+                <td>{organizer_name}</td>
               </tr>
               <tr>
                 <td>Date:</td>
@@ -60,6 +60,7 @@ ItemDataPanel.propTypes = {
     price: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
+    organizer_name: PropTypes.string,
   }),
 };
 
