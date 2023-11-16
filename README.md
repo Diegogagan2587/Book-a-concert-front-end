@@ -92,11 +92,8 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-Live Demo will be available in a couple of Hrs
 
-<!-- > Add a link to your deployed project.
-
-- [Live Demo Link](https://google.com) -->
+- [Live Demo Link](https://book-a-concert.onrender.com/) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
