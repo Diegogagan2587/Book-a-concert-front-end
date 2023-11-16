@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   updatedAvailability,
   resetAvailability,
-} from '../redux/reservationForm/reservationFormSlice';
+} from '../redux/slices/reservationFormSlice';
 import getConcerts from '../redux/requests/getConcerts';
 import DropDownSelect from '../components/buttons/DropDownSelect';
 import RoundedButton from '../components/buttons/RoundedButton';
