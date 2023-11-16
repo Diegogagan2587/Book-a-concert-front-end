@@ -1,28 +1,33 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/slices/userSlice';
 
 const Signup = () => {
   const dispatch = useDispatch();
-  const [userData, setUserData] = useState({
-    name: '',
-  });
+  const userStatus = useSelector((state) => state.user.status);
+  const [userData, setUserData] = useState({ name: '' });
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSignup = () => {
     dispatch(registerUser(userData))
-      .then(() => {
-        // Handle successful registration
-        setErrorMessage(''); // Clear any previous error message
+      .unwrap()
+      .then((data) => {
+        // Handle success
+        setSuccessMessage(data.message); // Assuming the API returns a message on success
+        setErrorMessage('');
       })
-      .catch((error) => {
-        if (error.payload && error.payload.error) {
-          setErrorMessage(error.payload.error);
-        } else {
-          setErrorMessage('An unexpected error occurred');
-        }
+      .catch((rejectedValue) => {
+        // Handle error
+        setErrorMessage(rejectedValue.error);
+        setSuccessMessage('');
       });
   };
+
+  useEffect(() => {
+    // Handle userStatus changes if needed
+    console.log(userStatus);
+  }, [userStatus]);
 
   return (
     <div className='login-page'>
@@ -39,11 +44,16 @@ const Signup = () => {
         <button onClick={handleSignup} className='btn'>Signup</button>
 
         {errorMessage && (
-          <div className='error-message'>
+          <div className='error'>
             {errorMessage}
           </div>
         )}
 
+        {successMessage && (
+          <div className='error'>
+            {successMessage}
+          </div>
+        )}
       </div>
     </div>
   );

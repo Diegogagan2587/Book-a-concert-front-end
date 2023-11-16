@@ -36,7 +36,7 @@ const Login = () => {
         <button onClick={handleLogin} className='btn'>Login</button>
         {userStatus === 'failed' && (
           <div className='error'>
-            <p>Error: {userMessage || 'User not found'}</p>
+            <p>{userMessage || 'User not found'}</p>
           </div>
         )}
       </div>
