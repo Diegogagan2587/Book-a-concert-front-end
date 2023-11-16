@@ -21,9 +21,14 @@ const DeleteConcertPage = () => {
     }
   }, [concertStatus]);
 
-  const handleDelete = (concertId) => {
-    dispatch(deleteConcert(concertId));
+    const handleDelete = async (concertId) => {
+    await dispatch(deleteConcert(concertId));
+  
+    // After the deletion is successful, update the userConcerts state
+    const updatedUserConcerts = userConcerts.filter(concert => concert.id !== concertId);
+    setUserConcerts(updatedUserConcerts);
   };
+  
 
   return (
     <div className="delete-concert-page">
