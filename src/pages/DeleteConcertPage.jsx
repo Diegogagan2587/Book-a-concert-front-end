@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteConcert } from '../redux/slices/concertSlice';
+import '../stylesheets/DeleteConcertPage.css';
 
 const DeleteConcertPage = () => {
   const [userConcerts, setUserConcerts] = useState([]);
@@ -25,13 +26,14 @@ const DeleteConcertPage = () => {
   };
 
   return (
-    <div>
+    <div className="delete-concert-page">
       <h2>Delete Your Concerts</h2>
       {successMessage && <p>{successMessage}</p>}
       <ul>
         {userConcerts.map(concert => (
           <li key={concert.id}>
-            {concert.title} - <button onClick={() => handleDelete(concert.id)}>Delete</button>
+            <span>{concert.title}</span>
+            <button onClick={() => handleDelete(concert.id)}>Delete</button>
           </li>
         ))}
       </ul>
