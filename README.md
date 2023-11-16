@@ -92,7 +92,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-Live Demo will be avalble in a couple of Hrs
+Live Demo will be available in a couple of Hrs
 
 <!-- > Add a link to your deployed project.
 
@@ -135,7 +135,7 @@ Then clone the project repository in you current folder
 
 to install project follow next steps:
  
- 1. Opent the project folder
+ 1. Open the project folder
 
 ```sh
   cd Book-a-concert-front-end
@@ -194,7 +194,7 @@ npm run build
 - LinkedIn: [Rudi Carrillo](https://www.linkedin.com/in/rudi-carrillo/)
 - Instagram: [@__rudicarrillo](https://www.instagram.com/_rudicarrillo/)
 
-👤 **Dievo Vidal Lopez**
+👤 **Diego Vidal Lopez**
 
 - GitHub: [@Diegogagan2587](https://github.com/Diegogagan2587)
 - Twitter: [@dieg02587](https://twitter.com/dieg02587)
@@ -215,7 +215,7 @@ npm run build
 > Some features we might implement:
 
 - [ ] **Test**
-- [ ] **Cancel a reservatio**
+- [ ] **Cancel a reservation**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
