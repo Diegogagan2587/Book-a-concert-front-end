@@ -19,7 +19,7 @@ function App() {
     dispatch(getOrganizers());
   }, [dispatch]);
   return (
-    <Router basename='/Book-a-concert-front-end'>
+    <Router basename='/Book-a-concert-front-end/'>
       <div className='App sm:flex '>
         <NavigationPanel />
         <main className="container sm:w-3/4 h-screen">
