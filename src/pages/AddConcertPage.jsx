@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addConcert } from '../redux/slices/concertSlice';
+import '../stylesheets/AddConcertPage.css';
 
 const AddConcertPage = () => {
   const initialConcertData = {
@@ -10,7 +11,7 @@ const AddConcertPage = () => {
     organizer_id: 0,
     description: '',
     img: '',
-    price: 0,
+    price: '',
     date: '',
     city: ''
   };
@@ -38,7 +39,7 @@ const AddConcertPage = () => {
   useEffect(() => {
     // Resetear el mensaje de éxito cuando el componente se monta
     setSuccessMessage('');
-  }, []); // Aquí faltaba cerrar la función useEffect
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,10 +51,10 @@ const AddConcertPage = () => {
   };
 
   return (
-    <div>
+    <div className="add-concert-page">
       <h2>Add a New Concert</h2>
       {successMessage && <p>{successMessage}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="add-concert-form">
         <input
           type="text"
           name="title"
@@ -95,7 +96,7 @@ const AddConcertPage = () => {
           onChange={handleChange}
           placeholder="City"
         />
-        <button type="submit">Add Concert</button>
+        <button type="submit" className="add-concert-button">Add Concert</button>
       </form>
     </div>
   );
