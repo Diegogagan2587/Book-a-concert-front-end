@@ -25,14 +25,24 @@ export const registerUser = createAsyncThunk(
       });
 
       const data = await response.json();
-
-      return data;
+      
+      if (response.ok) {
+        return data;
+      } else {
+        if (response.status === 422) {
+          // Handle the case where the user already exists
+          return rejectWithValue({ error: data.error });
+        } else {
+          return rejectWithValue({ error: data.error || 'An error occurred' });
+        }
+      }
     } catch (error) {
       // Handle other errors, if any
       return rejectWithValue({ error: 'An error occurred' });
     }
   }
 );
+
 
 // New action to log in a user
 export const loginUser = createAsyncThunk(
