@@ -13,14 +13,16 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import getOrganizers from './redux/requests/getOrganizers';
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getOrganizers());
   }, [dispatch]);
+
   return (
     <Router>
-      <div className='App sm:flex '>
+      <div className='App sm:flex'>
         <NavigationPanel />
         <main className="container sm:w-3/4 h-screen">
           <Routes>
