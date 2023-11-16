@@ -52,6 +52,7 @@
     <li><a href="https://redux.js.org/">Redux</a></li>
     <li><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></li>
     <li><a href="https://react-slick.neostack.com/">React Slick (for Carousel)</a></li>
+    <li><a href="https://tailwindcss.com/">Tailwind</a></li>
   </ul>
 </details>
 
@@ -91,9 +92,11 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
+Live Demo will be avalble in a couple of Hrs
 
-- [Live Demo Link](https://google.com)
+<!-- > Add a link to your deployed project.
+
+- [Live Demo Link](https://google.com) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -101,65 +104,65 @@
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
-> Describe how a new developer could make use of your project.
+> Would you like to make use of this project?
 
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need:
+First Make sure YOu have installed
 
-<!--
-Example command:
+- [git](https://git-scm.com/)
+- [node](https://nodejs.org/en)
+- A code editor, the most used is [vscode](https://code.visualstudio.com/) but you can chose any other.
 
-```sh
- gem install rails
-```
- -->
+**We do recommend to work on linux**
 
 ### Setup
 
-Clone this repository to your desired folder:
-
-<!--
-Example commands:
+Open you desired folder within you terminal:
 
 ```sh
   cd my-folder
-  git clone git@github.com:myaccount/my-project.git
 ```
---->
+Then clone the project repository in you current folder
+
+```sh
+  git clone git@github.com:Diegogagan2587/Book-a-concert-front-end.git
+```
 
 ### Install
 
-Install this project with:
-
-<!--
-Example command:
+to install project follow next steps:
+ 
+ 1. Opent the project folder
 
 ```sh
-  cd my-project
-  gem install
+  cd Book-a-concert-front-end
 ```
---->
+2. then install require dependencies:
+
+```sh
+npm install
+```
+Everything should be ready now!
 
 ### Usage
 
 To run the project, execute the following command:
 
-<!--
-Example command:
-
 ```sh
-  rails server
+  npm run dev
 ```
---->
 
 ### Run tests
 
-To run tests, run the following command:
+Test are under implementation !
 
 <!--
+To run tests, run the following command:
+
+
 Example command:
 
 ```sh
@@ -169,15 +172,12 @@ Example command:
 
 ### Deployment
 
-You can deploy this project using:
-
-<!--
-Example:
+You can deploy locally this project using:
 
 ```sh
-
+npm run build
 ```
- -->
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -185,19 +185,26 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
+> You still here? Let's connect!
 
-👤 **Author1**
+👤 **Rudi Carrillo**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@rudicarrilloypr](https://github.com/rudicarrilloypr)
+- Twitter: [@__rudicarrillo](https://twitter.com/__rudicarrillo)
+- LinkedIn: [Rudi Carrillo](https://www.linkedin.com/in/rudi-carrillo/)
+- Instagram: [@__rudicarrillo](https://www.instagram.com/_rudicarrillo/)
 
-👤 **Author2**
+👤 **Dievo Vidal Lopez**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@Diegogagan2587](https://github.com/Diegogagan2587)
+- Twitter: [@dieg02587](https://twitter.com/dieg02587)
+- LinkedIn: [Diego Vidal Lopez](https://www.linkedin.com/in/diego-vidal2587/)
+
+👤 **Dani Morillo**
+
+- GitHub: [@danifromecuador](https://github.com/danifromecuador)
+- Twitter: [@danifromecuador](https://twitter.com/danimorilloc)
+- LinkedIn: [danielfromecuador](https://www.linkedin.com/in/danifromec)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -205,11 +212,10 @@ Example:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-> Describe 1 - 3 features you will add to the project.
+> Some features we might implement:
 
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- [ ] **Test**
+- [ ] **Cancel a reservatio**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -219,7 +225,7 @@ Example:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Diegogagan2587/Book-a-concert-front-end/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -227,9 +233,7 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-> Write a message to encourage readers to support your project
-
-If you like this project...
+Feel free to leave us an star on this repo.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -237,9 +241,13 @@ If you like this project...
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> Give credit to everyone who inspired your codebase.
+> Learn about people that impact our project:
 
-I would like to thank...
+I'd like to express my gratitude to everyone who made this project possible.
+
+Thanks again to everyone who believed in this project and helped make it a reality!
+
+Furthermore, special recognition is due to the [author](https://www.behance.net/muratk) of this [design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) that served as inspiration for our work
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -247,15 +255,15 @@ I would like to thank...
 
 ## ❓ FAQ (OPTIONAL) <a name="faq"></a>
 
-> Add at least 2 questions new developers would ask when they decide to use your project.
+> Discover some Frequent Ask Questions
 
-- **[Question_1]**
+- **What if I want to modify this project according to my requirements?**
 
-  - [Answer_1]
+  - Consider forking the repository, you will get access that way to modify the project and get your own version
 
-- **[Question_2]**
+- **What if I have a suggestion?**
 
-  - [Answer_2]
+  - Please visit the Issues Page linked before and submit your suggestion there.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -264,7 +272,4 @@ I would like to thank...
 ## 📝 License <a name="license"></a>
 
 This project is [MIT](./LICENSE) licensed.
-
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
