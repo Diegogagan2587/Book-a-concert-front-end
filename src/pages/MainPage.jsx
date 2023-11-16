@@ -20,7 +20,7 @@ function MainPage() {
     infinite: true,
     speed: 500,
     slidesToShow: 3, // Adjust the number of slides to show
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     centerMode: true,
     prevArrow: <LeftButton />,
     nextArrow: <RightButton />,
