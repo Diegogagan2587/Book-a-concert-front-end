@@ -33,7 +33,7 @@ const App = () => {
     <Router>
       <div className="App sm:flex">
         <NavigationPanel />
-        <main className="container sm:w-3/4 h-screen">
+        <main className="container sm:w-3/4 h-screen sm:overflow-y-auto">
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/concerts/:id" element={<ConcertDetailsPage />} />
