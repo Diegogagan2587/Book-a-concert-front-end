@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteConcert } from '../redux/slices/concertSlice';
 import '../stylesheets/DeleteConcertPage.css';
+import getConcerts from '../redux/requests/getConcerts';
 
 const DeleteConcertPage = () => {
   const [userConcerts, setUserConcerts] = useState([]);
@@ -27,6 +28,9 @@ const DeleteConcertPage = () => {
     // After the deletion is successful, update the userConcerts state
     const updatedUserConcerts = userConcerts.filter(concert => concert.id !== concertId);
     setUserConcerts(updatedUserConcerts);
+
+    // Dispatch getConcerts to fetch the updated list
+    dispatch(getConcerts());
   };
   
 

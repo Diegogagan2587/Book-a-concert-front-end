@@ -44,8 +44,8 @@ const AddConcertPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(addConcert({ ...concertData, organizer_id: currentUser.id }))
-    .then(dispatch(getConcerts()));
+    await dispatch(addConcert({ ...concertData, organizer_id: currentUser.id }))
+    dispatch(getConcerts());
   };
 
   const handleChange = (e) => {
