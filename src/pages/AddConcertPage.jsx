@@ -53,7 +53,7 @@ const AddConcertPage = () => {
   return (
     <div className="add-concert-page">
       <h2>Add a New Concert</h2>
-      {successMessage && <p>{successMessage}</p>}
+      {successMessage && <p className="success-message">{successMessage}</p>}
       <form onSubmit={handleSubmit} className="add-concert-form">
         <input
           type="text"
