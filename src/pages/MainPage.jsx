@@ -1,19 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useSelector,useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import LeftButton from '../components/buttons/LeftButton';
 import RightButton from '../components/buttons/RightButton';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { setCurrentConcert } from '../redux/slices/concertSlice';
+
 
 function MainPage() {
-  const [concerts, setConcerts] = useState([]);
-
-  useEffect(() => {
-    fetch('https://book-a-concert-api.onrender.com/concerts')
-      .then((response) => response.json())
-      .then((data) => setConcerts(data));
-  }, []);
+  const concerts = useSelector((state) => state.concerts.created);
+  const dispatch = useDispatch();
 
   const settings = {
     dots: true,
@@ -51,9 +48,9 @@ function MainPage() {
       <h2 className="text-center text-4xl my-2">Available Concerts</h2>
       <p className='text-center text-slate-500 my-2'>Please select an event</p>
       <Slider {...settings}>
-        {concerts.map((concert) => (
-          <div key={concert.id} >
-            <Link to={`/concerts/${concert.id}`} className='flex justify-center'>
+        {concerts && concerts.map((concert) => (
+          <div key={concert.id} onClick={() => dispatch(setCurrentConcert(concert))}>
+            <Link to={`/concerts/${concert.id}`}  className='flex justify-center'>
               <div className="shadow-xl border-2 rounded-md concert-item flex flex-col bg-white h-96 w-52 justify-between items-center p-2 mx-2 w-300">
                 <div className="p-2 bg-slate-200 w-48 h-48 flex flex-1 items-center justify-center rounded-full">
                   <img
