@@ -25,8 +25,10 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    logged && dispatch(filteredUserReservations(id));
-  }, [dispatch,logged, id]);
+    if (logged) {
+      dispatch(filteredUserReservations(id));
+    }
+  }, [dispatch, logged, id]);
 
 
   return (
