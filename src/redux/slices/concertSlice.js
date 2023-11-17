@@ -46,9 +46,15 @@ const concertSlice = createSlice({
   name: 'concerts',
   initialState: {
     items: [],
+    currentConcert: {},
     created: null,
     status: null,
     error: null
+  },
+  reducers: {
+    setCurrentConcert: (state, action) => {
+      state.currentConcert = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -78,4 +84,5 @@ const concertSlice = createSlice({
   },
 });
 
+export const { setCurrentConcert } = concertSlice.actions;
 export default concertSlice.reducer;
