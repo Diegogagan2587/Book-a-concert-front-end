@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  created: null,
   concerts: [],
   status: 'idle',
   resetForm: false,
@@ -10,7 +11,7 @@ const initialState = {
 };
 
 export const reservationFormSlice = createSlice({
-  name: 'reservationForm',
+  name: 'reservations',
   initialState,
   reducers: {
     //reducers functions here
@@ -71,6 +72,16 @@ export const reservationFormSlice = createSlice({
       };
       return { ...state, ...newState };
     },
+    filteredUserReservations: (state, action) => {
+      //we will filter reservations where user_id === action.payload
+      const filteredReservations = state.created.filter(
+        (reservation) => reservation.user_id === action.payload
+      );
+      const newState = {
+        created: filteredReservations,
+      };
+      return { ...state, ...newState };
+    },
   },
   extraReducers: (builder) => {
     //extraReducers functions here
@@ -97,9 +108,16 @@ export const reservationFormSlice = createSlice({
     builder.addCase('getConcerts/rejected', (state) => {
       return { ...state, status: 'failed' };
     });
+    builder.addCase('getReservations/fulfilled', (state, action) => {
+      console.log('builder.addCase getReservations/fulfilled--->',action.payload);
+    const newState = {
+        created: action.payload,
+      };
+      return { ...state, ...newState };
+    });
   },
 });
 
-export const { updatedAvailability, resetAvailability } =
+export const { updatedAvailability, resetAvailability, filteredUserReservations } =
   reservationFormSlice.actions;
 export default reservationFormSlice.reducer;
