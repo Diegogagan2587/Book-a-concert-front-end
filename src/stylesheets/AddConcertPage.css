@@ -29,6 +29,11 @@
   z-index: 1;
 }
 
+.add-concert-page p.success-message {
+  color: white;
+  z-index: 1;
+}
+
 .add-concert-form {
   background-color: rgba(150, 191, 1, 0.5);
   padding: 20px;
