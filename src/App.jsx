@@ -8,21 +8,30 @@ import Signup from './components/Signup';
 import NavigationPanel from './components/NavigationPanel';
 import MyReservationsPage from './pages/MyReservationsPage';
 import AddConcertPage from './pages/AddConcertPage';
-import DeleteConcertPage from './pages/DeleteConcertPage'; 
+import DeleteConcertPage from './pages/DeleteConcertPage';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import getOrganizers from './redux/requests/getOrganizers';
+import { useDispatch, useSelector } from 'react-redux';
+import getConcerts from './redux/requests/getConcerts';
+import getReservations from './redux/requests/getReservations';
+import {filteredUserReservations} from './redux/slices/reservationSlice';
 
 const App = () => {
   const dispatch = useDispatch();
+  const { logged, id } = useSelector((state) => state.user.details);
 
   useEffect(() => {
-    dispatch(getOrganizers());
+    dispatch(getConcerts());
+    dispatch(getReservations());
   }, [dispatch]);
+
+  useEffect(() => {
+    logged && dispatch(filteredUserReservations(id));
+  }, [dispatch,logged, id]);
+
 
   return (
     <Router>
-      <div className='App sm:flex'>
+      <div className="App sm:flex">
         <NavigationPanel />
         <main className="container sm:w-3/4 h-screen">
           <Routes>
@@ -39,6 +48,6 @@ const App = () => {
       </div>
     </Router>
   );
-}
+};
 
 export default App;
