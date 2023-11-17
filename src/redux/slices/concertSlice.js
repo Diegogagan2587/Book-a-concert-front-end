@@ -46,6 +46,7 @@ const concertSlice = createSlice({
   name: 'concerts',
   initialState: {
     items: [],
+    created: null,
     status: null,
     error: null
   },
@@ -66,6 +67,13 @@ const concertSlice = createSlice({
       .addCase(deleteConcert.rejected, (state, action) => {
         state.error = action.payload;
         state.status = 'delete_failed';
+      });
+
+      builder.addCase('getConcerts/fulfilled', (state, action) => {
+        const newState = {
+          created: action.payload,
+        };
+        return { ...state, ...newState };
       });
   },
 });

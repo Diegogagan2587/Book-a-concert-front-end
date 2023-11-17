@@ -1,34 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import '../stylesheets/MyReservationsPage.css';
 
 function MyReservationsPage() {
-  const [myReservations, setMyReservations] = useState([]);
-  const [current_user, setCurrentUser] = useState([]);
-  const [concerts, setConcerts] = useState([]);
-
-  useEffect(() => {
-    fetch('https://book-a-concert-api.onrender.com/current_user/reservations')
-      .then(response => response.json())
-      .then(data => setMyReservations(data));
-  }, []);
-
-  useEffect(() => {
-    fetch('https://book-a-concert-api.onrender.com/current_user')
-      .then(response => response.json())
-      .then(data => setCurrentUser(data));
-  }, []);
-
-  useEffect(() => {
-    fetch('https://book-a-concert-api.onrender.com/concerts')
-      .then(response => response.json())
-      .then(data => setConcerts(data));
-  }, []);
+  const { name } = useSelector((state) => state.user.details);
+  const myReservations = useSelector((state) => state.reservation.created);
+  const concerts = useSelector((state) => state.concerts.created);
 
   return (
     <div className="my-reservations-page">
       <h1>MY RESERVATIONS</h1>
       {myReservations.length === 0 ? (
-        <h2>The user <strong>{current_user.name}</strong> has no reservations yet</h2>
+        <h2>The user <strong>{name}</strong> has no reservations yet</h2>
       ) : (
         <ul>
           {myReservations.map(reservation => {
