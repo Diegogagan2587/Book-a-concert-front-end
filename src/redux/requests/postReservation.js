@@ -13,7 +13,7 @@ const postReservation = createAsyncThunk(
       },
       body: JSON.stringify({
         reservation: {
-          user_id: user_id, // Replace with the actual user's ID
+          user_id: user_id,
           concert_id: id,
           date: date,
           city: city,
