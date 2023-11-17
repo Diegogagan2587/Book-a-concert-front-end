@@ -11,6 +11,7 @@
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
+  - [Kanban Board](#kanban-board)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
@@ -39,6 +40,17 @@
 **Reserve a Concert** is a website were you can create an event or a concert, and other people can book for your event. Or you can book for the events of others.
 
 ## 🛠 Built With <a name="built-with"></a>
+
+### Kanban Board <a id="kanban-board">
+- Take a look to the [Project Kanban Board](https://github.com/users/Diegogagan2587/projects/4/views/2)
+- Final number of team members: 3
+- Kanban Initial state below:
+
+<div align="center">
+    <img src="kanban.png" alt="kanban" width="auto"  height="auto" />
+</div>
+
+
 
 ### Tech Stack <a name="tech-stack"></a>
 
