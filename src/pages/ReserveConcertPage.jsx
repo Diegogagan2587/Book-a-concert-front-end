@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   updatedAvailability,
   resetAvailability,
-} from '../redux/slices/reservationFormSlice';
-import getConcerts from '../redux/requests/getConcerts';
+} from '../redux/slices/reservationSlice';
 import DropDownSelect from '../components/buttons/DropDownSelect';
 import RoundedButton from '../components/buttons/RoundedButton';
 import postReservation from '../redux/requests/postReservation';
@@ -12,18 +11,10 @@ import imgURL from '../assets/img/pexels-photo-1387174.jpeg';
 
 
 function ReserveConcertPage() {
-  const [current_user, setCurrentUser] = useState();
+  const current_user = useSelector((state) => state.user.details);
   const { availableCities, availableDates, availableConcerts, concerts } =
-    useSelector((state) => state.reservationForm);
+    useSelector((state) => state.reservation.form);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getConcerts());
-    fetch('https://book-a-concert-api.onrender.com/current_user')
-    .then((response)=>response.json())
-    .then((data)=>setCurrentUser(data))
-  }, [dispatch]);
-
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
