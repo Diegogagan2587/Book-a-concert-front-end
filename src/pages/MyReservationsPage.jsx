@@ -25,7 +25,7 @@ function MyReservationsPage() {
                 </div>
                 <div className='bottom'>
                   <div className='concert_title'>{reservation.concert_title}</div>
-                  <div className='concert_description'>{description}</div>
+                  <div className='concert_description overflow-y-auto'>{description}</div>
                   <div className='city-date'>
                     <div>{reservation.city}</div>
                     <div>{reservation.date}</div>
