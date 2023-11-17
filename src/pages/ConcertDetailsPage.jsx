@@ -1,5 +1,5 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import ItemDataPanel from '../components/ItemDataPanel';
 import LeftButton from '../components/buttons/LeftButton';
 
