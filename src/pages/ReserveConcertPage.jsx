@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   updatedAvailability,
   resetAvailability,
+  filteredUserReservations
 } from '../redux/slices/reservationSlice';
+import getReservations from '../redux/requests/getReservations';
 import DropDownSelect from '../components/buttons/DropDownSelect';
 import RoundedButton from '../components/buttons/RoundedButton';
 import postReservation from '../redux/requests/postReservation';
@@ -17,7 +19,7 @@ function ReserveConcertPage() {
     useSelector((state) => state.reservation.form);
   const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     let user_id = current_user.id;
     let city = availableCities[0];
@@ -32,12 +34,22 @@ function ReserveConcertPage() {
         concert.title === concertTitle
     );
     //finally we post the reservation to the database
-    dispatch(postReservation({ user_id, ...concertToBook }))
-      .then((response) => {
-        if (response.meta.requestStatus === 'fulfilled') {
-          setSuccessMessage('Reservation created successfully');
-        }
-      });
+    try {
+      // Post the reservation to the database
+      await dispatch(postReservation({ user_id, ...concertToBook }));
+    
+      // Set the success message
+      setSuccessMessage('Reservation created successfully');
+    
+      // Get the updated reservations
+      await dispatch(getReservations());
+    
+      // Filter user reservations
+      dispatch(filteredUserReservations(user_id));
+    } catch (error) {
+      // Handle errors if needed
+      console.error('Error:', error);
+    }
   };
   return (
     <>
