@@ -12,6 +12,7 @@ import imgURL from '../assets/img/pexels-photo-1387174.jpeg';
 
 function ReserveConcertPage() {
   const current_user = useSelector((state) => state.user.details);
+  const [successMessage, setSuccessMessage] = useState('');
   const { availableCities, availableDates, availableConcerts, concerts } =
     useSelector((state) => state.reservation.form);
   const dispatch = useDispatch();
@@ -31,9 +32,13 @@ function ReserveConcertPage() {
         concert.title === concertTitle
     );
     //finally we post the reservation to the database
-    dispatch(postReservation({ user_id, ...concertToBook }));
+    dispatch(postReservation({ user_id, ...concertToBook }))
+      .then((response) => {
+        if (response.meta.requestStatus === 'fulfilled') {
+          setSuccessMessage('Reservation created successfully');
+        }
+      });
   };
-
   return (
     <>
       <main
@@ -105,6 +110,7 @@ function ReserveConcertPage() {
               </RoundedButton>
             </div>
           </form>
+          {successMessage && <p>{successMessage}</p>}
         </div>
       </main>
     </>
