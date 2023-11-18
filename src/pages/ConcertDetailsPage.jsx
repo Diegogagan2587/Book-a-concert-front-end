@@ -1,22 +1,13 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
-import getConcert from '../redux/requests/getConcert';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import ItemDataPanel from '../components/ItemDataPanel';
 import LeftButton from '../components/buttons/LeftButton';
-import { useEffect } from 'react';
 
 function ConcertDetailsPage() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = useParams(); // Obtiene el ID del concierto de la URL
-  const concert = useSelector((state) => state.concertDetails);
+  const concert = useSelector((state) => state.concerts.currentConcert);
 
-  useEffect(() => {
-    dispatch(getConcert(id)); 
-  }, [id, dispatch]);
-
-  if(concert.status === 'loading') return (<div className="flex justify-center items-center h-screen text-red-500">Loading...</div>)
-  if(concert.status === 'error') return (<div className="flex justify-center items-center h-screen text-red-500">Something went wrong...</div>)
+  if(!concert) return (<div className="flex justify-center items-center h-screen text-red-500">Something went wrong...</div>)
 
   return (
     // Div below need to be adjusted for thir CSS properties when integrating this component to the app

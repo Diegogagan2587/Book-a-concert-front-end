@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addConcert } from '../redux/slices/concertSlice';
 import '../stylesheets/AddConcertPage.css';
+import getConcerts from '../redux/requests/getConcerts';
 
 const AddConcertPage = () => {
   const initialConcertData = {
@@ -41,9 +42,10 @@ const AddConcertPage = () => {
     setSuccessMessage('');
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(addConcert({ ...concertData, organizer_id: currentUser.id }));
+    await dispatch(addConcert({ ...concertData, organizer_id: currentUser.id }))
+    dispatch(getConcerts());
   };
 
   const handleChange = (e) => {

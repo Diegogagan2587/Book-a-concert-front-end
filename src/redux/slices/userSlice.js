@@ -59,7 +59,11 @@ export const loginUser = createAsyncThunk(
       const data = await response.json();
 
       if (response.ok) {
-        return { username: username, ...data }; 
+        const current_userResponse = await fetch(
+          'https://book-a-concert-api.onrender.com/current_user'
+        );
+        const user = await current_userResponse.json();
+        return { username: username, ...data, ...user };
       } else {
         return { error: data.error || 'Login failed' };
       }
@@ -118,8 +122,11 @@ export const userSlice = createSlice({
         if (action.payload.error) {
           state.status = 'failed';
         } else {
-          state.details = action.payload;
-          state.status = 'succeeded';
+          const newState = {
+            details: action.payload,
+            status: 'succeeded',
+          };
+          return { ...state, ...newState };
         }
       })
       .addCase(loginUser.rejected, (state, action) => {

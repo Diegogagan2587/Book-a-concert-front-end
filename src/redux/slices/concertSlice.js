@@ -46,8 +46,15 @@ const concertSlice = createSlice({
   name: 'concerts',
   initialState: {
     items: [],
+    currentConcert: {},
+    created: null,
     status: null,
     error: null
+  },
+  reducers: {
+    setCurrentConcert: (state, action) => {
+      state.currentConcert = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -67,7 +74,15 @@ const concertSlice = createSlice({
         state.error = action.payload;
         state.status = 'delete_failed';
       });
+
+      builder.addCase('getConcerts/fulfilled', (state, action) => {
+        const newState = {
+          created: action.payload,
+        };
+        return { ...state, ...newState };
+      });
   },
 });
 
+export const { setCurrentConcert } = concertSlice.actions;
 export default concertSlice.reducer;
