@@ -7,6 +7,7 @@ import '../stylesheets/AddConcertPage.css';
 import getConcerts from '../redux/requests/getConcerts';
 
 const AddConcertPage = () => {
+  const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
   const initialConcertData = {
     title: '',
     organizer_id: 0,
@@ -25,7 +26,7 @@ const AddConcertPage = () => {
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {
-    fetch('https://book-a-concert-api.onrender.com/current_user')
+    fetch(`${API_URL_BASE}/current_user`)
       .then((res) => res.json())
       .then((data) => setCurrentUser(data));
   }, []);

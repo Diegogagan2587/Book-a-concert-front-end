@@ -1,12 +1,12 @@
 // src/redux/slices/concertSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
+const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
 // addConcert asyncThunk
 export const addConcert = createAsyncThunk(
   'concerts/addConcert',
   async (concertData, { rejectWithValue }) => {
     try {
-      const response = await fetch('https://book-a-concert-api.onrender.com/concerts', {
+      const response = await fetch(`${API_URL_BASE}/concerts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export const deleteConcert = createAsyncThunk(
   'concerts/deleteConcert',
   async (concertId, { rejectWithValue }) => {
     try {
-      const response = await fetch(`https://book-a-concert-api.onrender.com/concerts/${concertId}`, {
+      const response = await fetch(`${API_URL_BASE}/concerts/${concertId}`, {
         method: 'DELETE'
       });
       if (!response.ok) {
