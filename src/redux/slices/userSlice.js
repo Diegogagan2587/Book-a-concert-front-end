@@ -1,3 +1,4 @@
+const API_URL_BASE = import.meta.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
 // src/redux/slices/userSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -16,7 +17,7 @@ export const registerUser = createAsyncThunk(
   'user/registerUser',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await fetch('https://book-a-concert-api.onrender.com/signup', {
+      const response = await fetch(`${API_URL_BASE}/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
