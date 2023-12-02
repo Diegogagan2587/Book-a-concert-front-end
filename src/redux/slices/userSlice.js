@@ -1,4 +1,4 @@
-const API_URL_BASE = import.meta.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
+const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
 // src/redux/slices/userSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
@@ -6,7 +6,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 export const getCurrentUser = createAsyncThunk(
   'user/getCurrentUser',
   async () => {
-    const response = await fetch('https://book-a-concert-api.onrender.com/current_user');
+    const response = await fetch(`${API_URL_BASE}/current_user`);
     const data = await response.json();
     return data.user || { error: 'User not found' };
   }
@@ -50,7 +50,7 @@ export const loginUser = createAsyncThunk(
   'user/loginUser',
   async (username) => {
     try {
-      const response = await fetch('https://book-a-concert-api.onrender.com/login', {
+      const response = await fetch(`${API_URL_BASE}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ export const loginUser = createAsyncThunk(
 
       if (response.ok) {
         const current_userResponse = await fetch(
-          'https://book-a-concert-api.onrender.com/current_user'
+          `${API_URL_BASE}/current_user`
         );
         const user = await current_userResponse.json();
         return { username: username, ...data, ...user };
@@ -78,7 +78,7 @@ export const loginUser = createAsyncThunk(
 export const logoutUser = createAsyncThunk(
   'user/logoutUser',
   async () => {
-    await fetch('https://book-a-concert-api.onrender.com/logout', { method: 'DELETE' });
+    await fetch(`${API_URL_BASE}/logout`, { method: 'DELETE' });
     return {};
   }
 );
