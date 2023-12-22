@@ -16,7 +16,7 @@ function MainPage() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3, // Adjust the number of slides to show
+    slidesToShow: concerts.length > 3 ? 3 : concerts.length > 2 ? 2 : 1, // Adjust the number of slides to show
     slidesToScroll: 1,
     centerMode: true,
     prevArrow: <LeftButton />,
