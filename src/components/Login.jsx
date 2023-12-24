@@ -6,6 +6,7 @@ import '../stylesheets/Login.css';
 
 const Login = () => {
   const [username, setUsernameInput] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userStatus = useSelector((state) => state.user.status);
@@ -32,6 +33,15 @@ const Login = () => {
           placeholder="Username"
           className='login-input'
           required
+        />
+        
+        <input
+        type='password'
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+        className='login-input'
+        required
         />
         <button onClick={handleLogin} className='btn'>Login</button>
         {userStatus === 'failed' && (
