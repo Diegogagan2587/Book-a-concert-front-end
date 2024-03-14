@@ -1,0 +1,53 @@
+.delete-concert-page {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-concert-page h2 {
+  color: black;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.delete-concert-page ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.delete-concert-page li {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-concert-page button {
+  background-color: #94bc0c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-concert-page button:hover {
+  background-color: #7ea307;
+}
+
+@media (max-width: 600px) {
+  .delete-concert-page ul {
+    grid-template-columns: 1fr;
+  }
+}

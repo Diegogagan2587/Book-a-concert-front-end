@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-const API_URL_BASE = 'https://book-a-concert-api.onrender.com';
+const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
 const POST_RESERVATION_URL = `${API_URL_BASE}/reservations`;
 
 const postReservation = createAsyncThunk(
@@ -13,7 +13,7 @@ const postReservation = createAsyncThunk(
       },
       body: JSON.stringify({
         reservation: {
-          user_id: user_id, // Replace with the actual user's ID
+          user_id: user_id,
           concert_id: id,
           date: date,
           city: city,

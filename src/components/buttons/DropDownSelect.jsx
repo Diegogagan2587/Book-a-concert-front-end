@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 function DropDownSelect({ id, name, items, onChange, placeHolder }) {
   const [selectedValue, setSelectedValue] = useState('');
-  const reset = useSelector((state) => state.reservationForm.resetForm);
+  const reset = useSelector((state) => state.reservation.form.resetForm);
 
   const handleSelectChange = (e) => {
     const value = e.target.value;

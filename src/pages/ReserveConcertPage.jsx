@@ -1,10 +1,11 @@
-import { useEffect,useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   updatedAvailability,
   resetAvailability,
-} from '../redux/reservationForm/reservationFormSlice';
-import getConcerts from '../redux/requests/getConcerts';
+  filteredUserReservations
+} from '../redux/slices/reservationSlice';
+import getReservations from '../redux/requests/getReservations';
 import DropDownSelect from '../components/buttons/DropDownSelect';
 import RoundedButton from '../components/buttons/RoundedButton';
 import postReservation from '../redux/requests/postReservation';
@@ -12,22 +13,15 @@ import imgURL from '../assets/img/pexels-photo-1387174.jpeg';
 
 
 function ReserveConcertPage() {
-  const [current_user, setCurrentUser] = useState();
+  const current_user = useSelector((state) => state.user.details);
+  const [successMessage, setSuccessMessage] = useState('');
   const { availableCities, availableDates, availableConcerts, concerts } =
-    useSelector((state) => state.reservationForm);
+    useSelector((state) => state.reservation.form);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getConcerts());
-    fetch('https://book-a-concert-api.onrender.com/current_user')
-    .then((response)=>response.json())
-    .then((data)=>setCurrentUser(data))
-  }, [dispatch]);
 
-
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let user_id = current_user.id;
+    let user_id = current_user.data.user.id;
     let city = availableCities[0];
     let date = availableDates[0];
     let concertTitle = availableConcerts[0];
@@ -40,9 +34,23 @@ function ReserveConcertPage() {
         concert.title === concertTitle
     );
     //finally we post the reservation to the database
-    dispatch(postReservation({ user_id, ...concertToBook }));
+    try {
+      // Post the reservation to the database
+      await dispatch(postReservation({ user_id, ...concertToBook }));
+    
+      // Set the success message
+      setSuccessMessage('Reservation created successfully');
+    
+      // Get the updated reservations
+      await dispatch(getReservations());
+    
+      // Filter user reservations
+      dispatch(filteredUserReservations(user_id));
+    } catch (error) {
+      // Handle errors if needed
+      console.error('Error:', error);
+    }
   };
-
   return (
     <>
       <main
@@ -114,6 +122,7 @@ function ReserveConcertPage() {
               </RoundedButton>
             </div>
           </form>
+          {successMessage && <p>{successMessage}</p>}
         </div>
       </main>
     </>

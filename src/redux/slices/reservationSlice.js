@@ -1,16 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  concerts: [],
-  status: 'idle',
-  resetForm: false,
-  availableConcerts: ['Select a concert'],
-  availableDates: ['Select a date'],
-  availableCities: ['Select a city'],
+  created: null,
+  form: {
+    concerts: [],
+    status: 'idle',
+    resetForm: false,
+    availableConcerts: ['Select a concert'],
+    availableDates: ['Select a date'],
+    availableCities: ['Select a city'],
+  },
 };
 
 export const reservationFormSlice = createSlice({
-  name: 'reservationForm',
+  name: 'reservations',
   initialState,
   reducers: {
     //reducers functions here
@@ -23,13 +26,13 @@ export const reservationFormSlice = createSlice({
         action.payload === 'Select a concert'
       )
         return state;
-      let updatedConcerts = state.concerts.map((concert) => {
+      let updatedConcerts = state.form.concerts.map((concert) => {
         if (
           concert.city === action.payload ||
           concert.date === action.payload ||
           concert.title === action.payload
         ) {
-          return concert
+          return concert;
         } else {
           return { ...concert, available: false };
         }
@@ -44,30 +47,42 @@ export const reservationFormSlice = createSlice({
       let concerts = updatedConcerts
         .filter((concert) => concert.available && concert.title)
         .map((concert) => concert.title);
-      let newState = {
+      let form = {
+        ...state.form,
         resetForm: false,
         concerts: [...updatedConcerts],
         availableCities: [...cities],
-        availableConcerts: [ ...concerts],
-        availableDates: [ ...dates],
+        availableConcerts: [...concerts],
+        availableDates: [...dates],
       };
-      return { ...state, ...newState };
+      return { ...state, form };
     },
     resetAvailability: (state) => {
       //we will make all dates an cities available again
-      let dates = state.concerts.map((concert) => concert.date);
-      let cities = state.concerts.map((concert) => concert.city);
-      let concertsTitles = state.concerts.map((concert) => concert.title);
-      let concerts = state.concerts.map((concert) => ({
+      let dates = state.form.concerts.map((concert) => concert.date);
+      let cities = state.form.concerts.map((concert) => concert.city);
+      let concertsTitles = state.form.concerts.map((concert) => concert.title);
+      let concerts = state.form.concerts.map((concert) => ({
         ...concert,
         available: true,
       }));
-      let newState = {
+      let form = {
+        ...state.form,
         resetForm: true,
         concerts: [...concerts],
-        availableCities: [ ...cities],
-        availableConcerts: [ ...concertsTitles],
-        availableDates: [ ...dates],
+        availableCities: [...cities],
+        availableConcerts: [...concertsTitles],
+        availableDates: [...dates],
+      };
+      return { ...state, form };
+    },
+    filteredUserReservations: (state, action) => {
+      //we will filter reservations where user_id === action.payload
+      const filteredReservations = state.created.filter(
+        (reservation) => reservation.user_id === action.payload
+      );
+      const newState = {
+        created: filteredReservations,
       };
       return { ...state, ...newState };
     },
@@ -83,11 +98,13 @@ export const reservationFormSlice = createSlice({
         ...concert,
       }));
       let newState = {
-        concerts: [...concerts],
-        status: 'succeeded',
-        availableCities: [ ...cities],
-        availableConcerts: [ ...concertsTitles],
-        availableDates: [ ...dates],
+        form: {
+          concerts: [...concerts],
+          status: 'succeeded',
+          availableCities: [...cities],
+          availableConcerts: [...concertsTitles],
+          availableDates: [...dates],
+        }
       };
       return { ...state, ...newState };
     });
@@ -97,9 +114,18 @@ export const reservationFormSlice = createSlice({
     builder.addCase('getConcerts/rejected', (state) => {
       return { ...state, status: 'failed' };
     });
+    builder.addCase('getReservations/fulfilled', (state, action) => {
+    const newState = {
+        created: action.payload,
+      };
+      return { ...state, ...newState };
+    });
   },
 });
 
-export const { updatedAvailability, resetAvailability } =
-  reservationFormSlice.actions;
+export const {
+  updatedAvailability,
+  resetAvailability,
+  filteredUserReservations,
+} = reservationFormSlice.actions;
 export default reservationFormSlice.reducer;

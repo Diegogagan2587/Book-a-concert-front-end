@@ -7,7 +7,7 @@ import { logoutUser } from '../redux/slices/userSlice';
 function NavigationPanel() {
   const user = useSelector((state) => state.user.details);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const isAuthenticated = user && user.username; // Verifica si el usuario está autenticado
+  const isAuthenticated = user && user.data; // Verifica si el usuario está autenticado
   const dispatch = useDispatch();
 
   const handleLogout = () => {

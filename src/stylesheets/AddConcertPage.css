@@ -1,0 +1,78 @@
+/* src/stylesheets/AddConcertPage.css */
+
+.add-concert-page {
+  background-image: url('/src/assets/img/festival.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.add-concert-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(20, 21, 18, 0.6); /* Capa con opacidad */
+}
+
+.add-concert-page h2 {
+  color: white;
+  font-size: 2em;
+  padding: 1em;
+  z-index: 1;
+}
+
+.add-concert-page p.success-message {
+  color: white;
+  z-index: 1;
+}
+
+.add-concert-form {
+  background-color: rgba(150, 191, 1, 0.5);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
+  z-index: 1;
+}
+
+.add-concert-input {
+  border: 2px solid #94bc0c;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.add-concert-button {
+  background-color: white;
+  color: #f5f7eb;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-concert-button:hover {
+  background-color: #f3f3f3; /* Cambia el color de fondo del botón al pasar el mouse */
+  color: #7ea307;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 600px) {
+  .add-concert-form {
+    width: 90%;
+  }
+}

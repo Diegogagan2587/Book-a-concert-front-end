@@ -1,12 +1,12 @@
 // src/redux/slices/concertSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
+const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
 // addConcert asyncThunk
 export const addConcert = createAsyncThunk(
   'concerts/addConcert',
   async (concertData, { rejectWithValue }) => {
     try {
-      const response = await fetch('https://book-a-concert-api.onrender.com/concerts', {
+      const response = await fetch(`${API_URL_BASE}/concerts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export const deleteConcert = createAsyncThunk(
   'concerts/deleteConcert',
   async (concertId, { rejectWithValue }) => {
     try {
-      const response = await fetch(`https://book-a-concert-api.onrender.com/concerts/${concertId}`, {
+      const response = await fetch(`${API_URL_BASE}/concerts/${concertId}`, {
         method: 'DELETE'
       });
       if (!response.ok) {
@@ -46,8 +46,15 @@ const concertSlice = createSlice({
   name: 'concerts',
   initialState: {
     items: [],
+    currentConcert: {},
+    created: null,
     status: null,
     error: null
+  },
+  reducers: {
+    setCurrentConcert: (state, action) => {
+      state.currentConcert = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -67,7 +74,15 @@ const concertSlice = createSlice({
         state.error = action.payload;
         state.status = 'delete_failed';
       });
+
+      builder.addCase('getConcerts/fulfilled', (state, action) => {
+        const newState = {
+          created: action.payload,
+        };
+        return { ...state, ...newState };
+      });
   },
 });
 
+export const { setCurrentConcert } = concertSlice.actions;
 export default concertSlice.reducer;
