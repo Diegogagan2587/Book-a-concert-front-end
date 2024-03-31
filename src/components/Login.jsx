@@ -1,16 +1,16 @@
+import '../stylesheets/Login.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../redux/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
-import '../stylesheets/Login.css';
+import { loginUser } from '../redux/slices/userSlice';
 import Loading from './Loading';
 
 const Login = () => {
   const [user, setUser] = useState({ email: '', password: '' });
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const userStatus = useSelector((state) => state.user.status);
   const userMessage = useSelector((state) => state.user.details.message);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     dispatch(loginUser(user));
