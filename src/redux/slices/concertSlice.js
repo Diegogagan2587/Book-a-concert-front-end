@@ -1,6 +1,7 @@
 // src/redux/slices/concertSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
+// eslint-disable-next-line 
+const API_URL_BASE = process.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
 // addConcert asyncThunk
 export const addConcert = createAsyncThunk(
   'concerts/addConcert',
@@ -75,9 +76,15 @@ const concertSlice = createSlice({
         state.status = 'delete_failed';
       });
 
+      builder.addCase('getConcerts/pending',(state) => {
+        const newState = { status: 'loading' };
+        return {...state, ...newState};
+      })
+
       builder.addCase('getConcerts/fulfilled', (state, action) => {
         const newState = {
           created: action.payload,
+          status: 'fulfilled',
         };
         return { ...state, ...newState };
       });

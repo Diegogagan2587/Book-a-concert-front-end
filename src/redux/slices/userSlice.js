@@ -1,4 +1,5 @@
-const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
+// eslint-disable-next-line 
+const API_URL_BASE = process.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
 // src/redux/slices/userSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 

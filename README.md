@@ -255,7 +255,7 @@ I'd like to express my gratitude to everyone who made this project possible.
 
 Thanks again to everyone who believed in this project and helped make it a reality!
 
-Furthermore, special recognition is due to the [author](https://www.behance.net/muratk) of this [design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) that served as inspiration for our work
+Furthermore, special recognition is due to [Murat Korkmaz](https://www.behance.net/muratk), the author of this [design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) that served as inspiration for our work
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import LeftButton from '../components/buttons/LeftButton';
 import RightButton from '../components/buttons/RightButton';
+import Loading from '../components/Loading';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { setCurrentConcert } from '../redux/slices/concertSlice';
@@ -10,6 +11,7 @@ import { setCurrentConcert } from '../redux/slices/concertSlice';
 
 function MainPage() {
   const concerts = useSelector((state) => state.concerts.created);
+  const status = useSelector((state) => state.concerts.status);
   const dispatch = useDispatch();
 
   const settings = {
@@ -47,6 +49,9 @@ function MainPage() {
     <div className="main-page box-border h-full flex flex-col justify-between py-10">
       <h2 className="text-center text-4xl my-2">Available Concerts</h2>
       <p className='text-center text-slate-500 my-2'>Please select an event</p>
+      <div className='flex items-center justify-center'>
+      { status === 'loading' && <Loading /> }
+      </div>
       <Slider {...settings}>
         {concerts && concerts.map((concert) => (
           <div key={concert.id} onClick={() => dispatch(setCurrentConcert(concert))}>
