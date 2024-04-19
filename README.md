@@ -63,7 +63,16 @@
     <li><a href="https://redux-toolkit.js.org/">Redux Toolkit</a></li>
     <li><a href="https://react-slick.neostack.com/">React Slick (for Carousel)</a></li>
     <li><a href="https://tailwindcss.com/">Tailwind</a></li>
-    <li><a href="https://jestjs.io/">Jest for Testing</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Tests</summary>
+  <ul>
+    <li><a href="https://vitest.dev/guide/">Vitest</a></li>
+    <li><a href="https://testing-library.com/docs/react-testing-library/intro/">React Testing Library</a></li>
+    <li><a href="https://github.com/jsdom/jsdom">JSDOM</a></li>
+    <li><a href="https://mswjs.io/">MSW</a></li>
   </ul>
 </details>
 
@@ -165,18 +174,16 @@ To run the project, execute the following command:
 
 ### Run tests
 
-Test are under implementation !
+We have implemented test using Vitest, React Testing Library and MSW for mocking
+responses from the API. If you would like replicate the settings for our test please refer to 
+[Introduction To React Testing](https://www.theodinproject.com/lessons/node-path-react-new-introduction-to-react-testing) 
+from [The Oding Project](https://www.theodinproject.com/);
 
-<!--
 To run tests, run the following command:
 
-
-Example command:
-
 ```sh
-  bin/rails test test/models/article_test.rb
+  npm run test
 ```
---->
 
 ### Deployment
 
@@ -222,7 +229,6 @@ npm run build
 
 > Some features we might implement:
 
-- [ ] **Test**
 - [ ] **Cancel a reservation**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
