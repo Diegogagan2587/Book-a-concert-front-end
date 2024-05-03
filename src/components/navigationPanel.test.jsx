@@ -1,6 +1,19 @@
+import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
+import store from '../redux/store';
+import NavigationPanel from './NavigationPanel';
+
 describe('NavigationPanel Component', () => {
   test('renders NavigationPanel without crashing', () => {
-    // Test case to ensure NavigationPanel renders without crashing
+    // Arrange , Act and Assert
+    render(
+      <Provider store={store}>
+        <Router>
+          <NavigationPanel />
+        </Router>
+      </Provider>
+    );
   });
 
   test('toggles navigation when menu button is clicked', () => {
