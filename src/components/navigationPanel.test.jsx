@@ -16,7 +16,25 @@ describe('NavigationPanel Component', () => {
     );
   });
 
-  test('toggles navigation when menu button is clicked', () => {
+  it('at first renders display Home, Login and Signup if Desktop', () => {
+    // Arrange
+    render(
+      <Provider store={store}>
+        <Router>
+          <NavigationPanel />
+        </Router>
+      </Provider>
+    );
+    // Act
+    const homeElement = screen.getByText(/Home/i);
+    const loginElement = screen.getByText(/Login/i);
+    const signupElement = screen.getByText(/Signup/i);
+    // Assert
+    expect(homeElement).toBeInTheDocument();
+    expect(loginElement).toBeInTheDocument();
+    expect(signupElement).toBeInTheDocument();
+  });
+
     // Test case to check if navigation toggles when menu button is clicked
   });
 
