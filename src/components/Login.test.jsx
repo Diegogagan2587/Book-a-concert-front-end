@@ -8,7 +8,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import store from '../redux/store';
 import Login from './Login';
 
-const LOGIN_URL = 'http://127.0.0.1:3001/login'
+// eslint-disable-next-line no-undef
+const API_URL_BASE = process.env.VITE_API_URL_BASE;
+const LOGIN_URL = `${API_URL_BASE}/login`;
 const server = setupServer(
   http.post(LOGIN_URL, async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
