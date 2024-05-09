@@ -24,6 +24,7 @@ function NavigationPanel() {
           <ion-icon
             name={`${(isNavOpen && 'close-outline') || 'menu-outline'}`}
           ></ion-icon>
+          <span className="hidden">menu-outline</span>
         </button>
         <span>
           <ion-icon name="search-outline"></ion-icon>
