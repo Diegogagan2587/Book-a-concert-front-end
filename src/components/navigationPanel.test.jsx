@@ -16,7 +16,7 @@ describe('NavigationPanel Component', () => {
     );
   });
 
-  it('at first renders display Home, Login and Signup if Desktop', () => {
+  it('render the Menu button', () => {
     // Arrange
     render(
       <Provider store={store}>
@@ -26,13 +26,9 @@ describe('NavigationPanel Component', () => {
       </Provider>
     );
     // Act
-    const homeElement = screen.getByText(/Home/i);
-    const loginElement = screen.getByText(/Login/i);
-    const signupElement = screen.getByText(/Signup/i);
+    const menuButton = screen.getByRole('button', { name: /Menu/i });
     // Assert
-    expect(homeElement).toBeInTheDocument();
-    expect(loginElement).toBeInTheDocument();
-    expect(signupElement).toBeInTheDocument();
+    expect(menuButton).toBeInTheDocument();
   });
 
     // Test case to check if navigation toggles when menu button is clicked
