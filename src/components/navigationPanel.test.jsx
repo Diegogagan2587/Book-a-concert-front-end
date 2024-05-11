@@ -31,8 +31,10 @@ describe('NavigationPanel Component', () => {
     expect(menuButton).toBeInTheDocument();
   });
   describe('When user is not authenticated', () => {
-    
   });
 
+  describe('When user is authenticated', () => {
+   
   });
+
 });
