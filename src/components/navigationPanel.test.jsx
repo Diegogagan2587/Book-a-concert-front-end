@@ -191,5 +191,20 @@ describe('NavigationPanel Component', () => {
       // Assert
       expect(window.location.pathname).toBe('/');
     });
+    it('redirects to reserve page when reserve button is clicked', () => {
+      // Arrange
+      render(
+        <Provider store={loggedInState}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const reserveElement = screen.getByText(/Reserve/i);
+      act(() => reserveElement.click());
+      // Assert
+      expect(window.location.pathname).toBe('/reserve');
+    });
   });
 });
