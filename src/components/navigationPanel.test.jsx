@@ -206,5 +206,20 @@ describe('NavigationPanel Component', () => {
       // Assert
       expect(window.location.pathname).toBe('/reserve');
     });
+    it('redirects to reservations page when reservations button is clicked', () => {
+      // Arrange
+      render(
+        <Provider store={loggedInState}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const reservationsElement = screen.getByText(/Reservations/i);
+      act(() => reservationsElement.click());
+      // Assert
+      expect(window.location.pathname).toBe('/my-reservations');
+    });
   });
 });
