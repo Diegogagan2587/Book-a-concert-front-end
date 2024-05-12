@@ -241,6 +241,19 @@ Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/Diegogagan2587/Book-a-concert-front-end/issues).
 
+### Naming branches conventions
+
+Before submitting a pull request please read the original article we based our naming branching conventions [Naming conventions for Git Branches - a Cheatsheet](https://medium.com/@abhay.pixolo/naming-conventions-for-git-branches-a-cheatsheet-8549feca2534) by [Abhay Amin in medium](https://medium.com/@abhay.pixolo). Check some examples with prefixes below:
+
+- `feat/branch-name` branches that implement a new feature or enhancement
+- `fix/branch-name` branches that fix a bug
+- `docs/branch-name` branches that works on documentation
+
+We are open to other prefixes as long as they are clear and follow general branching conventions. also please note that expect you to submit pull requests from feature branches.
+
+
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- SUPPORT -->
