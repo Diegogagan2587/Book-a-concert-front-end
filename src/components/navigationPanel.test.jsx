@@ -236,5 +236,20 @@ describe('NavigationPanel Component', () => {
       // Assert
       expect(window.location.pathname).toBe('/add-concert');
     });
+    it('redirects to delete concert page when delete concert button is clicked', () => {
+      // Arrange
+      render(
+        <Provider store={loggedInState}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const deleteConcertElement = screen.getByText(/Delete Concert/i);
+      act(() => deleteConcertElement.click());
+      // Assert
+      expect(window.location.pathname).toBe('/delete-concert');
+    });
   });
 });
