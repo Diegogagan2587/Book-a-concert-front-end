@@ -221,5 +221,20 @@ describe('NavigationPanel Component', () => {
       // Assert
       expect(window.location.pathname).toBe('/my-reservations');
     });
+    it('redirects to add concert page when add concert button is clicked', () => {
+      // Arrange
+      render(
+        <Provider store={loggedInState}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const addConcertElement = screen.getByText(/Add Concert/i);
+      act(() => addConcertElement.click());
+      // Assert
+      expect(window.location.pathname).toBe('/add-concert');
+    });
   });
 });
