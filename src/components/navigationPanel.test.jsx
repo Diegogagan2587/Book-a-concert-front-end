@@ -88,6 +88,21 @@ describe('NavigationPanel Component', () => {
       // Assert
       expect(window.location.pathname).toBe('/login');
     });
+    it('redirects to signup page when signup button is clicked', () => {
+      // Arrange
+      render(
+        <Provider store={store}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const signupElement = screen.getByText(/Signup/i);
+      act(() => signupElement.click());
+      // Assert
+      expect(window.location.pathname).toBe('/signup');
+    });
   });
 
   describe('When user is authenticated', () => {
