@@ -176,5 +176,20 @@ describe('NavigationPanel Component', () => {
       expect(loginElement).not.toBeInTheDocument();
       expect(signupElement).not.toBeInTheDocument();
     });
+    it('redirects to homepage when home button is clicked', () => {
+      // Arrange
+      render(
+        <Provider store={loggedInState}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const homeElement = screen.getByText(/Home/i);
+      act(() => homeElement.click());
+      // Assert
+      expect(window.location.pathname).toBe('/');
+    });
   });
 });
