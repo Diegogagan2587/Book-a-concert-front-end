@@ -31,10 +31,26 @@ describe('NavigationPanel Component', () => {
     expect(menuButton).toBeInTheDocument();
   });
   describe('When user is not authenticated', () => {
+    it('renders navigation links: Home, Login, SignUp', () => {
+      // Arrange
+      render(
+        <Provider store={store}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const homeElement = screen.getByText(/Home/i);
+      const loginElement = screen.getByText(/Login/i);
+      const signupElement = screen.getByText(/Signup/i);
+      // Assert
+      expect(homeElement).toBeInTheDocument();
+      expect(loginElement).toBeInTheDocument();
+      expect(signupElement).toBeInTheDocument();
+    });
   });
 
   describe('When user is authenticated', () => {
-   
   });
-
 });
