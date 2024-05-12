@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import store from '../redux/store';
@@ -71,6 +72,21 @@ describe('NavigationPanel Component', () => {
       expect(reservationsElement).not.toBeInTheDocument();
       expect(addConcertElement).not.toBeInTheDocument();
       expect(deleteConcertElement).not.toBeInTheDocument();
+    });
+    it('redirects to login page when login button is clicked', () => {
+      // Arrange
+      render(
+        <Provider store={store}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const loginElement = screen.getByText(/Login/i);
+      act(() => loginElement.click());
+      // Assert
+      expect(window.location.pathname).toBe('/login');
     });
   });
 
