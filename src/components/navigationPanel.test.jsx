@@ -160,5 +160,21 @@ describe('NavigationPanel Component', () => {
       expect(deleteConcertElement).toBeInTheDocument();
       expect(logoutButton).toBeInTheDocument();
     });
+    it('should not render: Login and Signup', () => {
+      // Arrange
+      render(
+        <Provider store={loggedInState}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const loginElement = screen.queryByText(/Login/i);
+      const signupElement = screen.queryByText(/Signup/i);
+      // Assert
+      expect(loginElement).not.toBeInTheDocument();
+      expect(signupElement).not.toBeInTheDocument();
+    });
   });
 });
