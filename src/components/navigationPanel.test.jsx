@@ -121,5 +121,44 @@ describe('NavigationPanel Component', () => {
   });
 
   describe('When user is authenticated', () => {
+    const loggedInState = {
+      user: {
+        details: {
+          data: {
+            user: {
+              id: 11,
+              email: 'luffy@mail.com',
+              name: 'luffy',
+            },
+          },
+        },
+      },
+      getState: () => loggedInState, // mocks the getState function
+      subscribe: () => {}, // mocks the subscribe function
+    };
+    it('should render: Home, Reserve, Reservations, Add Concert, Delete Concert and LogOut buttons', () => {
+      // Arrange
+      render(
+        <Provider store={loggedInState}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const homeElement = screen.getByText(/Home/i);
+      const reserveElement = screen.getByText(/Reserve/i);
+      const reservationsElement = screen.getByText(/Reservations/i);
+      const addConcertElement = screen.getByText(/Add Concert/i);
+      const deleteConcertElement = screen.getByText(/Delete Concert/i);
+      const logoutButton = screen.getByRole('button', { name: /Logout/i });
+      // Assert
+      expect(homeElement).toBeInTheDocument();
+      expect(reserveElement).toBeInTheDocument();
+      expect(reservationsElement).toBeInTheDocument();
+      expect(addConcertElement).toBeInTheDocument();
+      expect(deleteConcertElement).toBeInTheDocument();
+      expect(logoutButton).toBeInTheDocument();
+    });
   });
 });
