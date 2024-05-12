@@ -265,7 +265,9 @@ Stick to conventions can bring benefits like better clarity in code reviews, we 
 - `perf/` Changes that affect performance.
 - `revert` Automatically implemented by git, but it is used for changes that revert a commit.
 
+### What we value from pull request
 
+We appreciate clean contributions, that highlights main changes, if you plan to format the file, might be good idea to do it in another pull request to make changes that affect functionality easier to read by separate them from those than only affect formatting.
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
