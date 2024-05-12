@@ -49,6 +49,29 @@ describe('NavigationPanel Component', () => {
       expect(loginElement).toBeInTheDocument();
       expect(signupElement).toBeInTheDocument();
     });
+
+    it('should not render: Logout, Reserve, Reservations, Add Concert and Delete Concert', () => {
+      // Arrange
+      render(
+        <Provider store={store}>
+          <Router>
+            <NavigationPanel />
+          </Router>
+        </Provider>
+      );
+      // Act
+      const logoutButton = screen.queryByRole('button', { name: /Logout/i });
+      const reserveElement = screen.queryByText(/Reserve/i);
+      const reservationsElement = screen.queryByText(/Reservations/i);
+      const addConcertElement = screen.queryByText(/Add Concert/i);
+      const deleteConcertElement = screen.queryByText(/Delete Concert/i);
+      // Assert
+      expect(logoutButton).not.toBeInTheDocument();
+      expect(reserveElement).not.toBeInTheDocument();
+      expect(reservationsElement).not.toBeInTheDocument();
+      expect(addConcertElement).not.toBeInTheDocument();
+      expect(deleteConcertElement).not.toBeInTheDocument();
+    });
   });
 
   describe('When user is authenticated', () => {
