@@ -5,7 +5,7 @@ import store from '../redux/store';
 import NavigationPanel from './NavigationPanel';
 
 describe('NavigationPanel Component', () => {
-  test('renders NavigationPanel without crashing', () => {
+  it('renders NavigationPanel without crashing', () => {
     // Arrange , Act and Assert
     render(
       <Provider store={store}>
