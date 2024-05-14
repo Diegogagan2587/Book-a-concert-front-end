@@ -20,11 +20,12 @@ function NavigationPanel() {
   return (
     <nav className="border-2 sm:flex w-full sm:w-1/4">
       <div className=" flex justify-between px-4 sm:hidden">
-        <span onClick={() => handleMenu()}>
+        <button onClick={() => handleMenu()}>
           <ion-icon
             name={`${(isNavOpen && 'close-outline') || 'menu-outline'}`}
           ></ion-icon>
-        </span>
+          <span className="hidden">menu-outline</span>
+        </button>
         <span>
           <ion-icon name="search-outline"></ion-icon>
         </span>
