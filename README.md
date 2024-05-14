@@ -241,6 +241,35 @@ Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/Diegogagan2587/Book-a-concert-front-end/issues).
 
+### Naming branches conventions
+
+Before submitting a pull request please read the original article we based our naming branching conventions [Naming conventions for Git Branches - a Cheatsheet](https://medium.com/@abhay.pixolo/naming-conventions-for-git-branches-a-cheatsheet-8549feca2534) by [Abhay Amin in medium](https://medium.com/@abhay.pixolo). Check some examples with prefixes below:
+
+- `feat/branch-name` branches that implement a new feature or enhancement
+- `fix/branch-name` branches that fix a bug
+- `docs/branch-name` branches that works on documentation
+
+We are open to other prefixes as long as they are clear and follow general branching conventions. also please note that expect you to submit pull requests from feature branches.
+
+### Commit Conventions
+
+Stick to conventions can bring benefits like better clarity in code reviews, we strive to use the following prefixes in our commits:
+- `feat/element` when new functionality is added.
+- `fix/element` when a bug on `element` is fixed.
+- `chore/` daily task not related to features of errors, like adding elements to `.gitignore` or installing a dependency.
+- `test/` if we add or fix a test.
+- `docs/` when only documentation is updated.
+- `build/` when the change affects only compilation of the project.
+- `ci/` Changes that affect continuous integration.
+- `style/` Changes that affect code formatting and does not affect functionality.
+- `perf/` Changes that affect performance.
+- `revert` Automatically implemented by git, but it is used for changes that revert a commit.
+
+### What we value from pull request
+
+We appreciate clean contributions, that highlights main changes, if you plan to format the file, might be good idea to do it in another pull request to make changes that affect functionality easier to read by separate them from those than only affect formatting.
+
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- SUPPORT -->
