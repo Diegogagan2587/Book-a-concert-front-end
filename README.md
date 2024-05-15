@@ -162,6 +162,17 @@ to install project follow next steps:
 ```sh
 npm install
 ```
+
+3. As the last step, you'll need to create a `.env` file in the
+root folder of the project as shown below:
+```.env
+  //.env
+
+  VITE_API_URL_BASE='http://127.0.0.1:3001'
+```
+Note: Please make sure that VITE_API_URL_BASE correspond to your desired API base, in this case we are assuming that you have already installed and running the Rails API in local on your computer, if you don't, get it here: 
+[Book A Concert - Back End](https://github.com/Diegogagan2587/Book-a-concert-back-end).
+
 Everything should be ready now!
 
 ### Usage
@@ -192,7 +203,9 @@ You can deploy locally this project using:
 ```sh
 npm run build
 ```
+Don't forget to set up you environmental variables in production:
 
+- `API_URL_BASE = your_api_base_url_here`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
