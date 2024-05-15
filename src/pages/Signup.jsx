@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/slices/userSlice';
-import Loading from './Loading';
+import Loading from '../components/Loading';
 
 const Signup = () => {
   const dispatch = useDispatch();

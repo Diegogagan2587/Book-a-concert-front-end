@@ -4,7 +4,7 @@ import MainPage from './pages/MainPage';
 import ConcertDetailsPage from './pages/ConcertDetailsPage';
 import ReserveConcertPage from './pages/ReserveConcertPage';
 import Login from './components/Login';
-import Signup from './components/Signup';
+import Signup from './pages/Signup';
 import NavigationPanel from './components/NavigationPanel';
 import MyReservationsPage from './pages/MyReservationsPage';
 import AddConcertPage from './pages/AddConcertPage';
