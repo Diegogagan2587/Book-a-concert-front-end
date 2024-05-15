@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import ConcertDetailsPage from './pages/ConcertDetailsPage';
 import ReserveConcertPage from './pages/ReserveConcertPage';
-import Login from './components/Login';
+import Login from './pages/Login';
 import Signup from './pages/Signup';
 import NavigationPanel from './components/NavigationPanel';
 import MyReservationsPage from './pages/MyReservationsPage';
