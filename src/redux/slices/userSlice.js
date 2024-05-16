@@ -29,7 +29,7 @@ export const registerUser = createAsyncThunk(
       const data = await response.json();
       
       if (response.ok) {
-        return data.status.message;
+        return data;
       } else {
         if (response.status === 422) {
           // Handle the case where the user already exists

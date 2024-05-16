@@ -15,7 +15,7 @@ const Signup = () => {
       .unwrap()
       .then((data) => {
         // Handle success
-        setSuccessMessage(data); // Assuming the API returns a message on success
+        setSuccessMessage(data.status.message); // Assuming the API returns a message on success
         setErrorMessage('');
       })
       .catch((rejectedValue) => {
