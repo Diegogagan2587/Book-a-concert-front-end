@@ -90,7 +90,12 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: {
     name: '',
-    details: {},
+    details: {
+      status:{
+        message:"",
+        error:""
+      }
+    },
     status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   },
   reducers: {
