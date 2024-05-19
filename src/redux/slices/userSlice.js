@@ -137,6 +137,7 @@ export const userSlice = createSlice({
         state.status = 'succeeded';
       })
       .addCase(registerUser.rejected, (state, action)=>{
+        state.status = 'failed';
         state.details.status.error = action.payload.error;
         state.details.status.message = "";
       })
