@@ -15,7 +15,7 @@ import imgURL from '../assets/img/pexels-photo-1387174.jpeg';
 function ReserveConcertPage() {
   const current_user = useSelector((state) => state.user.details);
   const [successMessage, setSuccessMessage] = useState('');
-  const { availableCities, availableDates, availableConcerts, concerts } =
+  const { availableCities, availableDates, availableConcerts, concerts, preSelected } =
     useSelector((state) => state.reservation.form);
   const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ function ReserveConcertPage() {
     let concertTitle = availableConcerts[0];
 
     //we get the concert that has the same date, city and concert name from state
-    let concertToBook = concerts.find(
+    let concertToBook = preSelected || concerts.find(
       (concert) =>
         concert.city === city &&
         concert.date === date &&
