@@ -29,7 +29,7 @@ export const registerUser = createAsyncThunk(
       const data = await response.json();
       
       if (response.ok) {
-        return data.status.message;
+        return data;
       } else {
         if (response.status === 422) {
           // Handle the case where the user already exists
@@ -90,7 +90,12 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: {
     name: '',
-    details: {},
+    details: {
+      status:{
+        message:"",
+        error:""
+      }
+    },
     status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
   },
   reducers: {
@@ -101,7 +106,12 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
   .addCase(logoutUser.fulfilled, (state) => {
-    state.details = {};
+    state.details = {
+      status:{
+        message:"",
+        error:""
+      }
+    };
     state.status = 'idle';
   })
       .addCase(getCurrentUser.pending, (state) => {
@@ -123,7 +133,13 @@ export const userSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.details = action.payload;
+        state.details.status.error = '';
         state.status = 'succeeded';
+      })
+      .addCase(registerUser.rejected, (state, action)=>{
+        state.status = 'failed';
+        state.details.status.error = action.payload.error;
+        state.details.status.message = "";
       })
       .addCase(loginUser.pending, (state) =>{
         const newState = {

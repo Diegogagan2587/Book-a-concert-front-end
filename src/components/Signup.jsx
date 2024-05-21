@@ -6,23 +6,11 @@ import Loading from './Loading';
 const Signup = () => {
   const dispatch = useDispatch();
   const userStatus = useSelector((state) => state.user.status);
+  const successMessage = useSelector((state) => state.user.details.status.message);
+  const errorMessage = useSelector((state) => state.user.details.status.error);
   const [userData, setUserData] = useState({ name: '', email: '', password: '' });
-  const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-
   const handleSignup = () => {
-    dispatch(registerUser(userData))
-      .unwrap()
-      .then((data) => {
-        // Handle success
-        setSuccessMessage(data); // Assuming the API returns a message on success
-        setErrorMessage('');
-      })
-      .catch((rejectedValue) => {
-        // Handle error
-        setErrorMessage(rejectedValue.error);
-        setSuccessMessage('');
-      });
+    dispatch(registerUser(userData));
   };
 
   useEffect(() => {
