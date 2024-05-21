@@ -6,7 +6,9 @@ import { Provider } from 'react-redux';
 import store  from '../redux/store';
 import Signup from './Signup';
 
-const SIGNUP_URL = 'http://127.0.0.1:3001/signup';
+// eslint-disable-next-line no-undef
+const API_URL_BASE = process.env.VITE_API_URL_BASE;
+const SIGNUP_URL = `${API_URL_BASE}/signup`;
 const server = setupServer(
   http.post(SIGNUP_URL, async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
