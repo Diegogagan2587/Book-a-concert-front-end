@@ -6,6 +6,7 @@ const initialState = {
     concerts: [],
     status: 'idle',
     resetForm: false,
+    preSelected:null,
     availableConcerts: ['Select a concert'],
     availableDates: ['Select a date'],
     availableCities: ['Select a city'],
@@ -68,6 +69,7 @@ export const reservationFormSlice = createSlice({
       }));
       let form = {
         ...state.form,
+        preSelected:null,
         resetForm: true,
         concerts: [...concerts],
         availableCities: [...cities],
@@ -86,6 +88,15 @@ export const reservationFormSlice = createSlice({
       };
       return { ...state, ...newState };
     },
+    preSelectConcert: (state, action) => {
+      return {
+        ...state,
+        form: {
+          ...state.form,
+          preSelected: action.payload,
+        }
+      }
+    }
   },
   extraReducers: (builder) => {
     //extraReducers functions here
@@ -99,6 +110,7 @@ export const reservationFormSlice = createSlice({
       }));
       let newState = {
         form: {
+          ...state.form,
           concerts: [...concerts],
           status: 'succeeded',
           availableCities: [...cities],
@@ -127,5 +139,6 @@ export const {
   updatedAvailability,
   resetAvailability,
   filteredUserReservations,
+  preSelectConcert,
 } = reservationFormSlice.actions;
 export default reservationFormSlice.reducer;
