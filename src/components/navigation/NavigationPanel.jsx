@@ -12,6 +12,7 @@ function NavigationPanel() {
 
   const handleLogout = () => {
     dispatch(logoutUser());
+    setIsNavOpen(false);
   };
   const handleMenu = () => {
     setIsNavOpen(!isNavOpen);
