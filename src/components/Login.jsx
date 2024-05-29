@@ -27,7 +27,7 @@ const Login = () => {
     <div className="login-page">
       <img src={concertSVG} alt="concert icon" className="fixed z-0 w-1/2" />
       <div className="z-10 flex flex-col items-center">
-        <h1 className="font-bold text-center">BOOK A CONCERT APP</h1>
+        <h1 className="font-bold text-center font-sans">BOOK A CONCERT APP</h1>
         <div className="login-container">
           <input
             type="email"
