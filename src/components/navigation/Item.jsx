@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const item = ({ text, to }) => {
+const item = ({ text, to, onClick }) => {
   return (
     <li>
-      <Link to={to} className="hover:bg-[#94bc0c] pl-4 py-4 w-full block">
+      <Link to={to} onClick={onClick} className="hover:bg-[#94bc0c] pl-4 py-4 w-full block">
         {text}
       </Link>
     </li>

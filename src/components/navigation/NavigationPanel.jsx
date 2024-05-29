@@ -41,13 +41,13 @@ function NavigationPanel() {
          transform ${isNavOpen ? 'left-0' : 'left-[-100%]'}
        `}
       >
-        <Item to="/" text="Home" />
+        <Item to="/" text="Home" onClick={()=> setIsNavOpen(false)}/>
         {isAuthenticated ? (
           <>
-            <Item to="/reserve" text="Reserve" />
-            <Item to="/my-reservations" text="Reservations" />
-            <Item to="/add-concert" text="Add Concert" />
-            <Item to="/delete-concert" text="Delete Concert" />
+            <Item to="/reserve" text="Reserve" onClick={()=> setIsNavOpen(false)}/>
+            <Item to="/my-reservations" text="Reservations" onClick={()=> setIsNavOpen(false)}/>
+            <Item to="/add-concert" text="Add Concert" onClick={()=> setIsNavOpen(false)}/>
+            <Item to="/delete-concert" text="Delete Concert" onClick={()=> setIsNavOpen(false)}/>
             <li>
               <button
                 onClick={handleLogout}
@@ -59,8 +59,8 @@ function NavigationPanel() {
           </>
         ) : (
           <>
-            <Item to="/login" text="Login" />
-            <Item to="/signup" text="Signup" />
+            <Item to="/login" text="Login" onClick={()=> setIsNavOpen(false)}/>
+            <Item to="/signup" text="Signup" onClick={()=> setIsNavOpen(false)}/>
           </>
         )}
       </ul>
