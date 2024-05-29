@@ -33,7 +33,7 @@ function NavigationPanel() {
       <ul
         className={`
          flex flex-col sm:justify-center sm:gap-10 pl-4 pr-4
-         w-1/3 md:w-full absolute sm:relative bg-white px-4 h-screen 
+          w-1/3 sm:w-full absolute sm:relative bg-white px-4 h-screen 
          ${!isNavOpen && 'sm:flex'}
          z-40
          transition-all duration-500 ease-in-out
