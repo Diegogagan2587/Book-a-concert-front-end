@@ -1,8 +1,8 @@
 // src/components/NavigationPanel.jsx
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { logoutUser } from '../../redux/slices/userSlice';
+import Item from './Item';
 
 function NavigationPanel() {
   const user = useSelector((state) => state.user.details);
@@ -41,45 +41,13 @@ function NavigationPanel() {
          transform ${isNavOpen ? 'left-0' : 'left-[-100%]'}
        `}
       >
-        <li>
-          <Link to="/" className="hover:bg-[#94bc0c] pl-4 py-4 w-full block">
-            Home
-          </Link>
-        </li>
+        <Item to="/" text="Home" />
         {isAuthenticated ? (
           <>
-            <li>
-              <Link
-                to="/reserve"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Reserve
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/my-reservations"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Reservations
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/add-concert"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Add Concert
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/delete-concert"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Delete Concert
-              </Link>
-            </li>
+            <Item to="/reserve" text="Reserve" />
+            <Item to="/my-reservations" text="Reservations" />
+            <Item to="/add-concert" text="Add Concert" />
+            <Item to="/delete-concert" text="Delete Concert" />
             <li>
               <button
                 onClick={handleLogout}
@@ -91,22 +59,8 @@ function NavigationPanel() {
           </>
         ) : (
           <>
-            <li>
-              <Link
-                to="/login"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/signup"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Signup
-              </Link>
-            </li>
+            <Item to="/login" text="Login" />
+            <Item to="/signup" text="Signup" />
           </>
         )}
       </ul>
