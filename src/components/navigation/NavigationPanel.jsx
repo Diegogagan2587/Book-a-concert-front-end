@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { logoutUser } from '../redux/slices/userSlice';
+import { logoutUser } from '../../redux/slices/userSlice';
 
 function NavigationPanel() {
   const user = useSelector((state) => state.user.details);
