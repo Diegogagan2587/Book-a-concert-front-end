@@ -18,7 +18,6 @@
 .login-page .login-container {
   width: 80%;
   height: 50%;
-  border-radius: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
