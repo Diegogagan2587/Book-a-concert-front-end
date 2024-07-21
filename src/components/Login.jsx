@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 import '../stylesheets/Login.css';
-import concertSVG from '../assets/concert-icon.svg';
 import concertBG from '../assets/img/concert-bg-1.jpg';
 import Loading from './Loading';
 
