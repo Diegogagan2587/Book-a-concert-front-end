@@ -306,6 +306,7 @@ Thanks again to everyone who believed in this project and helped make it a reali
 Furthermore, special recognition is due to [Murat Korkmaz](https://www.behance.net/muratk), the author of this [design](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign) that served as inspiration for our work
 
 - Thanks to [uxwing](https://uxwing.com/sing-icon/) for providing some icons
+- Authentication Background Photo by anna-m. w.: https://www.pexels.com/photo/people-enjoying-the-concert-1047442/
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
