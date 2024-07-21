@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../redux/slices/userSlice';
-import AuthContainer from './AuthContainer';
+import AuthContainer from '../components/AuthContainer';
 import Loading from '../components/Loading';
 
 const Login = () => {

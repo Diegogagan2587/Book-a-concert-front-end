@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/slices/userSlice';
-import AuthContainer from './AuthContainer';
+import AuthContainer from '../components/AuthContainer';
 import Loading from '../components/Loading';
 
 const Signup = () => {
