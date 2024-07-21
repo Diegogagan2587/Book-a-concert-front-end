@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 import '../stylesheets/Login.css';
-import concertBG from '../assets/img/concert-bg-1.jpg';
+import AuthContainer from './AuthContainer';
 import Loading from './Loading';
 
 const Login = () => {
@@ -24,10 +24,7 @@ const Login = () => {
   }, [userStatus, navigate]);
 
   return (
-    <div className="login-page">
-      <img src={concertBG} alt="concert icon" className="fixed z-0 w-1/2" />
-      <div className="z-10 flex flex-col items-center">
-        <h1 className="font-bold text-center font-sans">BOOK A CONCERT APP</h1>
+    <AuthContainer>
         <div className="login-container">
           <input
             type="email"
@@ -55,8 +52,7 @@ const Login = () => {
             </div>
           )}
         </div>
-      </div>
-    </div>
+    </AuthContainer>
   );
 };
 
