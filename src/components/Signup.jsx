@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/slices/userSlice';
-import concertBG from '../assets/img/concert-bg-1.jpg';
+import AuthContainer from './AuthContainer';
 import Loading from './Loading';
 
 const Signup = () => {
@@ -26,10 +26,7 @@ const Signup = () => {
   }, [userStatus]);
 
   return (
-    <div className="login-page">
-      <img src={concertBG} alt="concert icon" className="fixed z-0 w-1/2" />
-      <div className="z-10 flex flex-col items-center">
-        <h1>BOOK A CONCERT APP</h1>
+    <AuthContainer>
         <div className="login-container">
           <input
             type="text"
@@ -69,8 +66,7 @@ const Signup = () => {
 
           {successMessage && <div className="error">{successMessage}</div>}
         </div>
-      </div>
-    </div>
+    </AuthContainer>
   );
 };
 
