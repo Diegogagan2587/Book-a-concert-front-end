@@ -1,8 +1,8 @@
 // src/components/NavigationPanel.jsx
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { logoutUser } from '../redux/slices/userSlice';
+import { logoutUser } from '../../redux/slices/userSlice';
+import Item from './Item';
 
 function NavigationPanel() {
   const user = useSelector((state) => state.user.details);
@@ -12,6 +12,7 @@ function NavigationPanel() {
 
   const handleLogout = () => {
     dispatch(logoutUser());
+    setIsNavOpen(false);
   };
   const handleMenu = () => {
     setIsNavOpen(!isNavOpen);
@@ -33,7 +34,7 @@ function NavigationPanel() {
       <ul
         className={`
          flex flex-col sm:justify-center sm:gap-10 pl-4 pr-4
-         w-1/3 md:w-full absolute sm:relative bg-white px-4 h-screen 
+          w-2/3 sm:w-full absolute sm:relative bg-white px-4 h-screen 
          ${!isNavOpen && 'sm:flex'}
          z-40
          transition-all duration-500 ease-in-out
@@ -41,45 +42,13 @@ function NavigationPanel() {
          transform ${isNavOpen ? 'left-0' : 'left-[-100%]'}
        `}
       >
-        <li>
-          <Link to="/" className="hover:bg-[#94bc0c] pl-4 py-4 w-full block">
-            Home
-          </Link>
-        </li>
+        <Item to="/" text="Home" onClick={()=> setIsNavOpen(false)}/>
         {isAuthenticated ? (
           <>
-            <li>
-              <Link
-                to="/reserve"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Reserve
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/my-reservations"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Reservations
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/add-concert"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Add Concert
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/delete-concert"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Delete Concert
-              </Link>
-            </li>
+            <Item to="/reserve" text="Reserve" onClick={()=> setIsNavOpen(false)}/>
+            <Item to="/my-reservations" text="Reservations" onClick={()=> setIsNavOpen(false)}/>
+            <Item to="/add-concert" text="Add Concert" onClick={()=> setIsNavOpen(false)}/>
+            <Item to="/delete-concert" text="Delete Concert" onClick={()=> setIsNavOpen(false)}/>
             <li>
               <button
                 onClick={handleLogout}
@@ -91,22 +60,8 @@ function NavigationPanel() {
           </>
         ) : (
           <>
-            <li>
-              <Link
-                to="/login"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/signup"
-                className="hover:bg-[#94bc0c] pl-4 py-4 w-full block"
-              >
-                Signup
-              </Link>
-            </li>
+            <Item to="/login" text="Login" onClick={()=> setIsNavOpen(false)}/>
+            <Item to="/signup" text="Signup" onClick={()=> setIsNavOpen(false)}/>
           </>
         )}
       </ul>

@@ -1,4 +1,5 @@
 import { useSelector,useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import LeftButton from '../components/buttons/LeftButton';
@@ -7,12 +8,16 @@ import Loading from '../components/Loading';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { setCurrentConcert } from '../redux/slices/concertSlice';
+import { resetAvailability } from '../redux/slices/reservationSlice';
 
 
 function MainPage() {
   const concerts = useSelector((state) => state.concerts.created);
   const status = useSelector((state) => state.concerts.status);
   const dispatch = useDispatch();
+
+  // Cleans any present concert in the state
+  useEffect(() => {dispatch(resetAvailability())}, []);
 
   const settings = {
     dots: true,

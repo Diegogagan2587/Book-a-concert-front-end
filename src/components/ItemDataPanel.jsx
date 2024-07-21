@@ -1,12 +1,16 @@
 import{ PropTypes } from 'prop-types';
 import RoundedButton from './buttons/RoundedButton';
 import {useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { preSelectConcert } from '../redux/slices/reservationSlice';
 
 function ItemDataPanel(props) {
   const { title, description, price, date, city, organizer_name } = props.concert;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleReserveClick = () => {
+    dispatch(preSelectConcert(props.concert));
     navigate('/reserve');
   }
   

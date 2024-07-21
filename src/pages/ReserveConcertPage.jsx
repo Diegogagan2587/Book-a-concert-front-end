@@ -15,7 +15,7 @@ import imgURL from '../assets/img/pexels-photo-1387174.jpeg';
 function ReserveConcertPage() {
   const current_user = useSelector((state) => state.user.details);
   const [successMessage, setSuccessMessage] = useState('');
-  const { availableCities, availableDates, availableConcerts, concerts } =
+  const { availableCities, availableDates, availableConcerts, concerts, preSelected } =
     useSelector((state) => state.reservation.form);
   const dispatch = useDispatch();
 
@@ -27,7 +27,7 @@ function ReserveConcertPage() {
     let concertTitle = availableConcerts[0];
 
     //we get the concert that has the same date, city and concert name from state
-    let concertToBook = concerts.find(
+    let concertToBook = preSelected || concerts.find(
       (concert) =>
         concert.city === city &&
         concert.date === date &&
@@ -82,7 +82,7 @@ function ReserveConcertPage() {
                   id="select-city"
                   name="select-city"
                   items={availableCities}
-                  placeHolder={'Select City'}
+                  placeHolder={ preSelected && preSelected.city || 'Select City' }
                   onChange={(e) =>
                     dispatch(updatedAvailability(e.target.value))
                   }
@@ -93,7 +93,7 @@ function ReserveConcertPage() {
                   id="select-date"
                   name="select-date"
                   items={availableDates}
-                  placeHolder={'Select Date'}
+                  placeHolder={preSelected && preSelected.date || 'Select Date'}
                   onChange={(e) =>
                     dispatch(updatedAvailability(e.target.value))
                   }
@@ -104,7 +104,7 @@ function ReserveConcertPage() {
                   id="select-concert"
                   name="select-concert"
                   items={availableConcerts}
-                  placeHolder={'Select Concert'}
+                  placeHolder={preSelected && preSelected.title || 'Select Concert'}
                   onChange={(e) =>
                     dispatch(updatedAvailability(e.target.value))
                   }
