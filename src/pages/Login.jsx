@@ -25,7 +25,7 @@ const Login = () => {
 
   return (
     <AuthContainer>
-        <div className="login-container">
+        <form className="login-container">
           <input
             type="email"
             value={user.email}
@@ -42,7 +42,7 @@ const Login = () => {
             className="login-input"
             required
           />
-          <button onClick={handleLogin} className="btn">
+          <button type='submmit' onClick={handleLogin} className="btn">
             Login
           </button>
           {userStatus === 'loading' && <Loading />}
@@ -51,7 +51,7 @@ const Login = () => {
               <p>{userMessage || 'User not found'}</p>
             </div>
           )}
-        </div>
+        </form>
     </AuthContainer>
   );
 };
