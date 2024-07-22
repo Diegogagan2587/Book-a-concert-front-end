@@ -36,7 +36,10 @@ const Login = () => {
           type="email"
           aria-label='Email'
           value={user.email}
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
+          onChange={(e) => {
+            setUser({ ...user, email: e.target.value });
+            setValidationError('');
+          }}
           placeholder="user@mail.com"
           className="login-input"
           required
@@ -45,7 +48,10 @@ const Login = () => {
           type="password"
           aria-label='Password'
           value={user.password}
-          onChange={(e) => setUser({ ...user, password: e.target.value })}
+          onChange={(e) => {
+            setUser({ ...user, password: e.target.value });
+            setValidationError('');
+          }}
           placeholder="Password"
           className="login-input"
           required
