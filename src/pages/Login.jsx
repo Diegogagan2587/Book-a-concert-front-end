@@ -16,7 +16,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if(user.email && user.password){
+    if (user.email && user.password) {
       dispatch(loginUser(user));
     } else {
       setValidationError('Please fill in all fields');
@@ -34,6 +34,7 @@ const Login = () => {
       <form className="login-container">
         <input
           type="email"
+          aria-label='Email'
           value={user.email}
           onChange={(e) => setUser({ ...user, email: e.target.value })}
           placeholder="user@mail.com"
@@ -42,13 +43,19 @@ const Login = () => {
         />
         <input
           type="password"
+          aria-label='Password'
           value={user.password}
           onChange={(e) => setUser({ ...user, password: e.target.value })}
           placeholder="Password"
           className="login-input"
           required
         />
-        <button type="submmit" onClick={handleLogin} className="btn">
+        <button
+          aria-label="Login"
+          type="submmit"
+          onClick={handleLogin}
+          className="btn"
+        >
           Login
         </button>
         {validationError && <p className="error">{validationError}</p>}
