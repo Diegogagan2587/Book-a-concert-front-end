@@ -9,13 +9,18 @@ const Signup = () => {
   const userStatus = useSelector((state) => state.user.status);
   const successMessage = useSelector((state) => state.user.details.status.message);
   const errorMessage = useSelector((state) => state.user.details.status.error);
+  const [ validationError, setValidationError ] = useState('');
   const [userData, setUserData] = useState({
     name: '',
     email: '',
     password: '',
   });
   const handleSignup = () => {
-    dispatch(registerUser(userData));
+    if(userData.name && userData.email && userData.password){
+      dispatch(registerUser(userData));
+    } else {
+      setValidationError('Please fill in all fields');
+    }
   };
 
   useEffect(() => {
@@ -58,6 +63,7 @@ const Signup = () => {
         {userStatus === 'loading' && <Loading />}
         {errorMessage && <div className="error">{errorMessage}</div>}
         {successMessage && <div className="error">{successMessage}</div>}
+        {validationError && <div className="error">{validationError}</div>}
       </div>
     </AuthContainer>
   );
