@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addConcert } from '../redux/slices/concertSlice';
 import '../stylesheets/AddConcertPage.css';
 import getConcerts from '../redux/requests/getConcerts';
+import { selectUserToken } from '../redux/slices/userSlice';
 
 const AddConcertPage = () => {
   const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
@@ -22,7 +23,7 @@ const AddConcertPage = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const dispatch = useDispatch();
   const concertStatus = useSelector((state) => state.concerts.status);
-  const token = useSelector((state) => state.user.details.token);
+  const token = useSelector(selectUserToken);
 
   const [currentUser, setCurrentUser] = useState({});
 
