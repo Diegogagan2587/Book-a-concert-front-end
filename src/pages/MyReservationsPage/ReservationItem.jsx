@@ -30,7 +30,7 @@ const ReservationItem = ({ reservation }) => {
 
 ReservationItem.propTypes = {
   reservation: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    concert_id: PropTypes.string.isRequired,
     concert_title: PropTypes.string,
     city: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
