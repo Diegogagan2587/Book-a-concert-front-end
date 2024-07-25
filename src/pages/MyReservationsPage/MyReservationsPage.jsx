@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import '../stylesheets/MyReservationsPage.css';
-import RegularList from '../components/list/RegularList';
-import ReservationItem from './MyReservationsPage/ReservationItem';
+import RegularList from '../../components/list/RegularList';
+import ReservationItem from './ReservationItem';
 
 function MyReservationsPage() {
   const { name } = useSelector((state) => state.user.details);
