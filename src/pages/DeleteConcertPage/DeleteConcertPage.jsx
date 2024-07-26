@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteConcert } from '../../redux/slices/concertSlice';
-import '../stylesheets/DeleteConcertPage.css';
+import '../../stylesheets/DeleteConcertPage.css';
 import getConcerts from '../../redux/requests/getConcerts';
 import RegularList from '../../components/list/RegularList';
 import ItemComponent from './ItemComponent';

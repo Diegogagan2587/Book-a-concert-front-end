@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import '../stylesheets/MyReservationsPage.css';
+import '../../stylesheets/MyReservationsPage.css';
 import RegularList from '../../components/list/RegularList';
 import ReservationItem from './ReservationItem';
 
