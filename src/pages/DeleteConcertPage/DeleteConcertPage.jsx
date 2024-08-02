@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteConcert } from '../redux/slices/concertSlice';
-import '../stylesheets/DeleteConcertPage.css';
-import getConcerts from '../redux/requests/getConcerts';
+import { deleteConcert } from '../../redux/slices/concertSlice';
+import '../../stylesheets/DeleteConcertPage.css';
+import getConcerts from '../../redux/requests/getConcerts';
+import RegularList from '../../components/list/RegularList';
+import ItemComponent from './ItemComponent';
 
 const DeleteConcertPage = () => {
   const [userConcerts, setUserConcerts] = useState([]);
@@ -51,12 +53,16 @@ const DeleteConcertPage = () => {
       <h2>Delete Your Concerts</h2>
       {successMessage && <p>{successMessage}</p>}
       <ul>
-        {userConcerts && userConcerts.length > 0 ? userConcerts.map(concert => (
-          <li key={concert.id}>
-            <span>{concert.title}</span>
-            <button onClick={() => handleDelete(concert.id)}>Delete</button>
-          </li>
-        )) : (<p>No concerts to display</p> )}
+        {userConcerts && userConcerts.length > 0 ? (
+          <RegularList
+            items={userConcerts}
+            resourceName="concert"
+            ItemComponent={ItemComponent}
+            handleDelete={handleDelete}
+          />
+        ) : (
+          <p>No concerts to display</p>
+        )}
       </ul>
     </div>
   );
