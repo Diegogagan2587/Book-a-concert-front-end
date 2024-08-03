@@ -22,7 +22,6 @@ const AddConcertPage = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const dispatch = useDispatch();
   const concertStatus = useSelector((state) => state.concerts.status);
-  const token = useSelector((state) => state.user.details.token);
   const userId = useSelector(selectUserId);
 
   useEffect(() => {
