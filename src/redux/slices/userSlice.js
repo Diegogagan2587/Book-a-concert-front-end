@@ -171,3 +171,5 @@ export default userSlice.reducer;
 
 // implementing selectors below
 export const selectUserToken = (state) => state.user.details.token;
+export const selectUserMessage = (state) => state.user.details.message;
+export const selectUserStatus = (state) => state.user.status;
