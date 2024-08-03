@@ -8,7 +8,6 @@ import getConcerts from '../redux/requests/getConcerts';
 import { selectUserId } from '../redux/slices/userSlice';
 
 const AddConcertPage = () => {
-  const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
   const initialConcertData = {
     title: '',
     organizer_id: 0,
@@ -25,29 +24,6 @@ const AddConcertPage = () => {
   const concertStatus = useSelector((state) => state.concerts.status);
   const token = useSelector((state) => state.user.details.token);
   const userId = useSelector(selectUserId);
-
-  const [currentUser, setCurrentUser] = useState({});
-
-  useEffect(() => {
-    if (token) {
-      fetch(`${API_URL_BASE}/current_user`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`, // Include the token n the Authorization header
-        },
-      })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('Failed to fetch current_user data');
-      
-      })
-      .then((data) => setCurrentUser(data))
-      .catch((error) => console.error('Error:', error));
-    }
-  }, []);
 
   useEffect(() => {
     if (concertStatus === 'succeeded') {
