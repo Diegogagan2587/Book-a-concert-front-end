@@ -160,3 +160,5 @@ export const userSlice = createSlice({
 export const { setUsername } = userSlice.actions;
 
 export default userSlice.reducer;
+// Selectors below:
+export const selectUserId = (state) => state.user.details.data.user.id;
