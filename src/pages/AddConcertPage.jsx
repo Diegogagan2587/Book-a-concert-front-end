@@ -32,11 +32,6 @@ const AddConcertPage = () => {
     }
   }, [concertStatus]);
 
-  useEffect(() => {
-    // Resetear el mensaje de éxito cuando el componente se monta
-    setSuccessMessage('');
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(addConcert({ ...concertData, organizer_id: userId }));
@@ -44,6 +39,7 @@ const AddConcertPage = () => {
   };
 
   const handleChange = (e) => {
+    setSuccessMessage('');
     setConcertData({ ...concertData, [e.target.name]: e.target.value });
   };
 
