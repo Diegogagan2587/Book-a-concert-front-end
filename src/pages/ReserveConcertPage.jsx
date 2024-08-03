@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   updatedAvailability,
   resetAvailability,
-  filteredUserReservations
+  filteredUserReservations,
+  selectReservationForm
 } from '../redux/slices/reservationSlice';
 import getReservations from '../redux/requests/getReservations';
 import DropDownSelect from '../components/buttons/DropDownSelect';
@@ -17,7 +18,7 @@ function ReserveConcertPage() {
   const current_user = useSelector(selectUserDetails);
   const [successMessage, setSuccessMessage] = useState('');
   const { availableCities, availableDates, availableConcerts, concerts, preSelected } =
-    useSelector((state) => state.reservation.form);
+    useSelector(selectReservationForm);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
