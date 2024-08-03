@@ -142,3 +142,8 @@ export const {
   preSelectConcert,
 } = reservationFormSlice.actions;
 export default reservationFormSlice.reducer;
+
+// selectors below
+export const selectReservationForm = (state) => state.reservation.form;
+export const selectResetFrom = (state) => state.reservation.form.resetForm;
+export const selectMyReservations = (state) => state.reservation.created;

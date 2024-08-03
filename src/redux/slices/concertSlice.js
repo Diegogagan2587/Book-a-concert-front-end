@@ -93,3 +93,8 @@ const concertSlice = createSlice({
 
 export const { setCurrentConcert } = concertSlice.actions;
 export default concertSlice.reducer;
+
+// selectors below
+export const selectConcertStatus = (state) => state.concerts.status;
+export const selectCurrentConcert = (state) => state.concerts.currentConcert;
+export const selectConcerts = (state) => state.concerts.created;
