@@ -1,16 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../redux/slices/userSlice';
+import { selectUserStatus, selectSignupSuccessMessage, selectSignupErrorMessage } from '../redux/slices/userSlice';
 import AuthContainer from './AuthContainer';
 import Loading from './Loading';
 
 const Signup = () => {
   const dispatch = useDispatch();
-  const userStatus = useSelector((state) => state.user.status);
-  const successMessage = useSelector(
-    (state) => state.user.details.status.message
-  );
-  const errorMessage = useSelector((state) => state.user.details.status.error);
+  const userStatus = useSelector(selectUserStatus);
+  const successMessage = useSelector(selectSignupSuccessMessage);
+  const errorMessage = useSelector(selectSignupErrorMessage);
   const [userData, setUserData] = useState({
     name: '',
     email: '',

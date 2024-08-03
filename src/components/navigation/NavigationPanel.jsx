@@ -2,10 +2,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { logoutUser } from '../../redux/slices/userSlice';
+import { selectUserDetails } from '../../redux/slices/userSlice';
 import Item from './Item';
 
 function NavigationPanel() {
-  const user = useSelector((state) => state.user.details);
+  const user = useSelector(selectUserDetails);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const isAuthenticated = user && user.data; // Verifica si el usuario está autenticado
   const dispatch = useDispatch();

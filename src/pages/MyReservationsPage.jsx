@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
 import '../stylesheets/MyReservationsPage.css';
+import { selectUserDetails } from '../redux/slices/userSlice';
 
 function MyReservationsPage() {
-  const { name } = useSelector((state) => state.user.details);
+  const { name } = useSelector(selectUserDetails);
   const myReservations = useSelector((state) => state.reservation.created);
   const concerts = useSelector((state) => state.concerts.created);
 

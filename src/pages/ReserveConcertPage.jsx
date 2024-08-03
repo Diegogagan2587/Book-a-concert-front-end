@@ -10,10 +10,11 @@ import DropDownSelect from '../components/buttons/DropDownSelect';
 import RoundedButton from '../components/buttons/RoundedButton';
 import postReservation from '../redux/requests/postReservation';
 import imgURL from '../assets/img/pexels-photo-1387174.jpeg';
+import { selectUserDetails } from '../redux/slices/userSlice';
 
 
 function ReserveConcertPage() {
-  const current_user = useSelector((state) => state.user.details);
+  const current_user = useSelector(selectUserDetails);
   const [successMessage, setSuccessMessage] = useState('');
   const { availableCities, availableDates, availableConcerts, concerts, preSelected } =
     useSelector((state) => state.reservation.form);
