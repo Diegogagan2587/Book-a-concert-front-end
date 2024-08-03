@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { selectResetFrom } from '../../redux/slices/reservationSlice';
 
 function DropDownSelect({ id, name, items, onChange, placeHolder }) {
   const [selectedValue, setSelectedValue] = useState('');
-  const reset = useSelector((state) => state.reservation.form.resetForm);
+  const reset = useSelector(selectResetFrom);
 
   const handleSelectChange = (e) => {
     const value = e.target.value;
