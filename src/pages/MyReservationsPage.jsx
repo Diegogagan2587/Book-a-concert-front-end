@@ -1,11 +1,13 @@
 import { useSelector } from 'react-redux';
 import '../stylesheets/MyReservationsPage.css';
 import { selectUserDetails } from '../redux/slices/userSlice';
+import { selectMyReservations } from '../redux/slices/reservationSlice';
+import { selectConcerts } from '../redux/slices/concertSlice';
 
 function MyReservationsPage() {
   const { name } = useSelector(selectUserDetails);
-  const myReservations = useSelector((state) => state.reservation.created);
-  const concerts = useSelector((state) => state.concerts.created);
+  const myReservations = useSelector(selectMyReservations);
+  const concerts = useSelector(selectConcerts);
 
   return (
     <div className="my-reservations-page">
