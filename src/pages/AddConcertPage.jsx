@@ -5,10 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addConcert, selectConcertStatus } from '../redux/slices/concertSlice';
 import '../stylesheets/AddConcertPage.css';
 import getConcerts from '../redux/requests/getConcerts';
-import { selectUserToken } from '../redux/slices/userSlice';
+import { selectUserId } from '../redux/slices/userSlice';
 
 const AddConcertPage = () => {
-  const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
   const initialConcertData = {
     title: '',
     organizer_id: 0,
@@ -23,30 +22,7 @@ const AddConcertPage = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const dispatch = useDispatch();
   const concertStatus = useSelector(selectConcertStatus);
-  const token = useSelector(selectUserToken);
-
-  const [currentUser, setCurrentUser] = useState({});
-
-  useEffect(() => {
-    if (token) {
-      fetch(`${API_URL_BASE}/current_user`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`, // Include the token n the Authorization header
-        },
-      })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('Failed to fetch current_user data');
-      
-      })
-      .then((data) => setCurrentUser(data))
-      .catch((error) => console.error('Error:', error));
-    }
-  }, []);
+  const userId = useSelector(selectUserId);
 
   useEffect(() => {
     if (concertStatus === 'succeeded') {
@@ -56,18 +32,14 @@ const AddConcertPage = () => {
     }
   }, [concertStatus]);
 
-  useEffect(() => {
-    // Resetear el mensaje de éxito cuando el componente se monta
-    setSuccessMessage('');
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(addConcert({ ...concertData, organizer_id: currentUser.id }))
+    await dispatch(addConcert({ ...concertData, organizer_id: userId }));
     dispatch(getConcerts());
   };
 
   const handleChange = (e) => {
+    setSuccessMessage('');
     setConcertData({ ...concertData, [e.target.name]: e.target.value });
   };
 
