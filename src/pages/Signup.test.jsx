@@ -81,8 +81,15 @@ describe('Signup Component', () => {
         <Signup />
       </Provider>
     );
-    // Act
+    const nameInput = screen.getByPlaceholderText('Username');
+    const emailInput = screen.getByPlaceholderText('Email@example.com');
+    const passwordInput = screen.getByPlaceholderText('Password');
     const signupBtn = screen.getByText('Signup');
+
+    // Act
+    await userEvent.type(nameInput, 'Luffy');
+    await userEvent.type(emailInput, "luffy@pirateking.com");
+    await userEvent.type(passwordInput, "pirateKing123");
     await userEvent.click(signupBtn);
     const loading = screen.getByText('Loading...');
     // Assert
