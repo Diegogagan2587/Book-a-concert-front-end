@@ -1,17 +1,8 @@
+import getCurrentUser from '../requests/getCurrentUser';
 // eslint-disable-next-line 
 const API_URL_BASE = process.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
 // src/redux/slices/userSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-// Acción para obtener el usuario actual
-export const getCurrentUser = createAsyncThunk(
-  'user/getCurrentUser',
-  async () => {
-    const response = await fetch(`${API_URL_BASE}/current_user`);
-    const data = await response.json();
-    return data.user || { error: 'User not found' };
-  }
-);
 
 // Acción para registrar un nuevo usuario
 export const registerUser = createAsyncThunk(
@@ -169,3 +160,5 @@ export const userSlice = createSlice({
 export const { setUsername } = userSlice.actions;
 
 export default userSlice.reducer;
+// Selectors below:
+export const selectUserId = (state) => state.user.details.data.user.id;
