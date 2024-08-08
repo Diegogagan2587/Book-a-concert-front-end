@@ -2,7 +2,7 @@
 // src/pages/AddConcertPage.jsx
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addConcert } from '../redux/slices/concertSlice';
+import { addConcert, selectConcertStatus } from '../redux/slices/concertSlice';
 import '../stylesheets/AddConcertPage.css';
 import getConcerts from '../redux/requests/getConcerts';
 import { selectUserId } from '../redux/slices/userSlice';
@@ -21,7 +21,7 @@ const AddConcertPage = () => {
   const [concertData, setConcertData] = useState(initialConcertData);
   const [successMessage, setSuccessMessage] = useState('');
   const dispatch = useDispatch();
-  const concertStatus = useSelector((state) => state.concerts.status);
+  const concertStatus = useSelector(selectConcertStatus);
   const userId = useSelector(selectUserId);
 
   useEffect(() => {

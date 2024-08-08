@@ -1,0 +1,46 @@
+import { useSelector } from 'react-redux';
+import '../stylesheets/MyReservationsPage.css';
+import { selectUserDetails } from '../redux/slices/userSlice';
+import { selectMyReservations } from '../redux/slices/reservationSlice';
+import { selectConcerts } from '../redux/slices/concertSlice';
+
+function MyReservationsPage() {
+  const { name } = useSelector(selectUserDetails);
+  const myReservations = useSelector(selectMyReservations);
+  const concerts = useSelector(selectConcerts);
+
+  return (
+    <div className="my-reservations-page">
+      <h1>MY RESERVATIONS</h1>
+      {myReservations.length === 0 ? (
+        <h2>The user <strong>{name}</strong> has no reservations yet</h2>
+      ) : (
+        <ul>
+          {myReservations.map(reservation => {
+            const concert = concerts.find(concert => concert.id === reservation.concert_id);
+            const img = concert ? concert.img : 'Image not available';
+            const description = concert ? concert.description : 'Description not available';
+
+            return (
+              <li key={reservation.id} >
+                <div className='img-container'>
+                  <img src={img} alt="Concert Image" />
+                </div>
+                <div className='bottom'>
+                  <div className='concert_title'>{reservation.concert_title}</div>
+                  <div className='concert_description overflow-y-auto'>{description}</div>
+                  <div className='city-date'>
+                    <div>{reservation.city}</div>
+                    <div>{reservation.date}</div>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+export default MyReservationsPage;

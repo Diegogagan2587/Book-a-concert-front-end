@@ -7,13 +7,13 @@ import RightButton from '../components/buttons/RightButton';
 import Loading from '../components/Loading';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { setCurrentConcert } from '../redux/slices/concertSlice';
+import { selectConcerts, selectConcertStatus, setCurrentConcert } from '../redux/slices/concertSlice';
 import { resetAvailability } from '../redux/slices/reservationSlice';
 
 
 function MainPage() {
-  const concerts = useSelector((state) => state.concerts.created);
-  const status = useSelector((state) => state.concerts.status);
+  const concerts = useSelector(selectConcerts);
+  const status = useSelector(selectConcertStatus);
   const dispatch = useDispatch();
 
   // Cleans any present concert in the state

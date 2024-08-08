@@ -57,8 +57,13 @@ test("Click on Login should show 'loading' when fetching user data", async () =>
       </Router>
     </Provider>
   );
-  // Act
+
   const loginBtn = screen.getByText('Login');
+  const emailInput = screen.getByPlaceholderText('user@mail.com');
+  const passwordInput = screen.getByPlaceholderText('Password');
+  // Act
+  await userEvent.type(emailInput, 'luffy@mail.com');
+  await userEvent.type(passwordInput, 'password');
   await userEvent.click(loginBtn);
   const loading = screen.getByText('Loading...');
   // Assert

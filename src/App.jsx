@@ -14,10 +14,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import getConcerts from './redux/requests/getConcerts';
 import getReservations from './redux/requests/getReservations';
 import {filteredUserReservations} from './redux/slices/reservationSlice';
+import { selectUserDetails } from './redux/slices/userSlice';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { logged, id } = useSelector((state) => state.user.details);
+  const { logged, id } = useSelector(selectUserDetails);
 
   useEffect(() => {
     dispatch(getConcerts());

@@ -2,17 +2,17 @@ import '../stylesheets/Login.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../redux/slices/userSlice';
+import { loginUser, selectUserStatus, selectUserMessage  } from '../redux/slices/userSlice';
 import AuthContainer from '../components/AuthContainer';
 import Loading from '../components/Loading';
 
 const Login = () => {
-  const [user, setUser] = useState({ email: '', password: '' });
-  const [validationError, setValidationError] = useState('');
-  const userStatus = useSelector((state) => state.user.status);
-  const userMessage = useSelector((state) => state.user.details.message);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [user, setUser] = useState({ email: '', password: '' });
+  const [validationError, setValidationError] = useState('');
+  const userStatus = useSelector(selectUserStatus);
+  const userMessage = useSelector(selectUserMessage);
 
   const handleLogin = (e) => {
     e.preventDefault();

@@ -2,10 +2,11 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ItemDataPanel from '../components/ItemDataPanel';
 import LeftButton from '../components/buttons/LeftButton';
+import { selectCurrentConcert } from '../redux/slices/concertSlice';
 
 function ConcertDetailsPage() {
   const navigate = useNavigate();
-  const concert = useSelector((state) => state.concerts.currentConcert);
+  const concert = useSelector(selectCurrentConcert);
 
   if(!concert) return (<div className="flex justify-center items-center h-screen text-red-500">Something went wrong...</div>)
 
