@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
-const Alert = (errorMessage) => {
+const Alert = ({message}) => {
   return (
-    <div className="error">{errorMessage}</div>
+    <div className="error">{message}</div>
   )
 };
 
 Alert.propTypes = {
-  errorMessage: PropTypes.string,
+  message: PropTypes.string,
 };
 
 export default Alert;
