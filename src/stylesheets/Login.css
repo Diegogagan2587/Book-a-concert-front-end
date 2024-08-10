@@ -28,7 +28,7 @@
 .login-page .login-container .btn,
 .login-page .error {
   width: 100%;
-  height: 50px;
+  min-height: 50px;
   border-radius: 25px;
   padding: 0 20px;
   background-color: white;
