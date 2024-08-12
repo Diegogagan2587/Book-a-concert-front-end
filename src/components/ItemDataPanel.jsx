@@ -1,18 +1,24 @@
 import{ PropTypes } from 'prop-types';
 import RoundedButton from './buttons/RoundedButton';
 import {useNavigate} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { preSelectConcert } from '../redux/slices/reservationSlice';
+import { selectUserId } from '../redux/slices/userSlice';
 
 function ItemDataPanel(props) {
   const { title, description, price, date, city, organizer_name } = props.concert;
+  const userId = useSelector(selectUserId);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleReserveClick = () => {
-    dispatch(preSelectConcert(props.concert));
-    navigate('/reserve');
-  }
+    if (userId) {
+      dispatch(preSelectConcert(props.concert));
+      navigate('/reserve');
+    } else {
+      navigate('/login');
+    }
+  };
   
   return (
     <section className="flex flex-col gap-5 md:justify-between md:h-2/3 m-2 p-x-2 p-y-6">
