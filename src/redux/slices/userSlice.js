@@ -93,6 +93,9 @@ export const userSlice = createSlice({
     setUsername: (state, action) => {
       state.name = action.payload;
     },
+    setUserMessage: (state, action) => {
+      state.details.status.message = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -157,7 +160,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUsername } = userSlice.actions;
+export const { setUsername, setUserMessage } = userSlice.actions;
 export default userSlice.reducer;
 // implementing selectors below
 export const selectUserId = (state) => state.user.details.data.user.id;
