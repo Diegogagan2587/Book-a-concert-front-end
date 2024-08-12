@@ -168,6 +168,6 @@ export const selectUserStatus = (state) => state.user.status;
 export const selectUserDetails = (state) => state.user.details;
 export const selectUserToken = (state) => state.user.details.token;
 export const selectUserMessage = (state) => state.user.details.message;
-export const selectSignupSuccessMessage = (state) => state.user.details.status.message;
+export const selectSignupSuccessMessage = (state) => state.user?.details?.status?.message;
 export const selectSignupErrorMessage = (state) => state.user.details.status.error;
 
