@@ -3,7 +3,7 @@ import RoundedButton from './buttons/RoundedButton';
 import {useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { preSelectConcert } from '../redux/slices/reservationSlice';
-import { selectUserId } from '../redux/slices/userSlice';
+import { selectUserId, setUserMessage } from '../redux/slices/userSlice';
 
 function ItemDataPanel(props) {
   const { title, description, price, date, city, organizer_name } = props.concert;
@@ -16,6 +16,7 @@ function ItemDataPanel(props) {
       dispatch(preSelectConcert(props.concert));
       navigate('/reserve');
     } else {
+      dispatch(setUserMessage('Please login to reserve a concert'));
       navigate('/login');
     }
   };
