@@ -124,10 +124,26 @@ describe('ItemDataPanel Component', () => {
     expect(priceElement).toBeInTheDocument();
   });
 
-  it('redirects to \'reserve\'  when Reserve button is clicked', async () => {
+  it('redirects to \'reserve\'  when Reserve button is clicked if user is logged', async () => {
     // Arrange
+    // we mock the user id to simulate a logged user
+    const loggedStore = {
+      ...store,
+      getState: () => ({
+        user: {
+          details: {
+            data: {
+              user: {
+                id: 1,
+              },
+            },
+          },
+        },
+      }),
+    };
+
     render(
-      <Provider store={store}>
+      <Provider store={loggedStore}>
         <Router>
           <ItemDataPanel concert={props.concert}/>
         </Router>
