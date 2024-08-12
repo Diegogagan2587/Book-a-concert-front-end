@@ -2,7 +2,7 @@ import '../stylesheets/Login.css';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { loginUser, selectUserStatus, selectUserMessage  } from '../redux/slices/userSlice';
+import { loginUser, selectUserStatus, selectUserMessage, selectSignupSuccessMessage  } from '../redux/slices/userSlice';
 import AuthContainer from '../components/AuthContainer';
 import Loading from '../components/Loading';
 
@@ -13,6 +13,7 @@ const Login = () => {
   const [validationError, setValidationError] = useState('');
   const userStatus = useSelector(selectUserStatus);
   const userMessage = useSelector(selectUserMessage);
+  const userStatusMessage = useSelector(selectSignupSuccessMessage);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -64,6 +65,7 @@ const Login = () => {
         >
           Login
         </button>
+        {userStatusMessage && <p className="error">{userStatusMessage}</p>}
         {validationError && <p className="error">{validationError}</p>}
         {userStatus === 'loading' && <Loading />}
         {userStatus === 'failed' && (
