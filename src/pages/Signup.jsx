@@ -4,6 +4,7 @@ import { registerUser } from '../redux/slices/userSlice';
 import { selectUserStatus, selectSignupSuccessMessage, selectSignupErrorMessage } from '../redux/slices/userSlice';
 import AuthContainer from '../components/AuthContainer';
 import Loading from '../components/Loading';
+import Alert from '../components/Alert';
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -62,9 +63,9 @@ const Signup = () => {
           Signup
         </button>
         {userStatus === 'loading' && <Loading />}
-        {errorMessage && <div className="error">{errorMessage}</div>}
-        {successMessage && <div className="error">{successMessage}</div>}
-        {validationError && <div className="error">{validationError}</div>}
+        {errorMessage && <Alert message={errorMessage} />}
+        {successMessage && <Alert message={successMessage} />}
+        {validationError && <Alert message={validationError} />}
       </div>
     </AuthContainer>
   );
