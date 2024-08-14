@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const Alert = ({message}) => {
   return (
-    <div className="error">{message}</div>
+    <div className="error max-w-md">{message}</div>
   )
 };
 
