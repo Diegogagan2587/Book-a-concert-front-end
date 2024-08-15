@@ -86,6 +86,33 @@ test('After successful login, user should be redirected to homepage', async () =
  expect(window.location.pathname).toBe('/');
 });
 
+test('when redirected from reserve, it should render "Please login to reseve a concert" ', () => {
+  // Arrange
+  const storeWithAlert = {
+    ...store,
+    getState: () => ({
+      user: {
+        details: {
+          status: {
+            message: 'Please login to reserve a concert',
+          },
+        },
+      },
+    })
+  };
+  render(
+    <Provider store={storeWithAlert}>
+      <Router>
+        <Login />
+      </Router>
+    </Provider>
+  );
+  // Act
+  const alert = screen.getByText('Please login to reserve a concert');
+  // Assert
+  expect(alert).toBeInTheDocument();
+});
+
 test('After failed login, error message should be displayed', async () => {
   // Arrange
   server.use(
