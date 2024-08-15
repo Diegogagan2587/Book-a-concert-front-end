@@ -178,4 +178,28 @@ describe('Signup Component', () => {
     // Assert
     expect(successMessage).toBeInTheDocument();
   });  
+  it('Should render "Please login to reserve a concert" when redirected from reserve',() => {
+    // Arrange
+    const storeWithAlert = {
+      ...store,
+      getState: () => ({
+        user: {
+          details: {
+            status: {
+              message: 'Please login to reserve a concert',
+            },
+          },
+        },
+      })
+    };
+    render(
+      <Provider store={storeWithAlert}>
+        <Signup />
+      </Provider>
+    );
+    // Act
+    const alert = screen.getByText('Please login to reserve a concert');
+    // Assert
+    expect(alert).toBeInTheDocument();
+  });
 });

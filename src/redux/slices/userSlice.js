@@ -93,6 +93,9 @@ export const userSlice = createSlice({
     setUsername: (state, action) => {
       state.name = action.payload;
     },
+    setUserMessage: (state, action) => {
+      state.details.status.message = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -157,14 +160,14 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUsername } = userSlice.actions;
+export const { setUsername, setUserMessage } = userSlice.actions;
 export default userSlice.reducer;
 // implementing selectors below
-export const selectUserId = (state) => state.user.details.data.user.id;
+export const selectUserId = (state) => state.user?.details?.data?.user?.id;
 export const selectUserStatus = (state) => state.user.status;
 export const selectUserDetails = (state) => state.user.details;
 export const selectUserToken = (state) => state.user.details.token;
 export const selectUserMessage = (state) => state.user.details.message;
-export const selectSignupSuccessMessage = (state) => state.user.details.status.message;
+export const selectSignupSuccessMessage = (state) => state.user?.details?.status?.message;
 export const selectSignupErrorMessage = (state) => state.user.details.status.error;
 
