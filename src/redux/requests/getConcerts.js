@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { API_URL_BASE } from '../../projectConfig';
 
-const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
 const GET_CONCERTS_URL = `${API_URL_BASE}/concerts/`;
 
 const getConcerts = createAsyncThunk('getConcerts', async () => {
