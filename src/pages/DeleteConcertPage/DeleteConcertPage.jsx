@@ -5,13 +5,13 @@ import '../../stylesheets/DeleteConcertPage.css';
 import getConcerts from '../../redux/requests/getConcerts';
 import RegularList from '../../components/list/RegularList';
 import ItemComponent from './ItemComponent';
+import { API_URL_BASE } from '../../projectConfig';
 
 const DeleteConcertPage = () => {
   const [userConcerts, setUserConcerts] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const dispatch = useDispatch();
-  const concertStatus = useSelector((state) => state.concerts.status);
-  const API_URL_BASE = import.meta.env.VITE_API_URL_BASE ||'https://book-a-concert-api.onrender.com'; 
+  const concertStatus = useSelector((state) => state.concerts.status); 
   const token = useSelector((state) => state.user.details.token);
 
   useEffect(() => {
